@@ -32,40 +32,57 @@
             <p class="subtitle">Soluciones inteligentes para la gestión de servicios públicos</p>
         </section>
 
+        <div class="services-controls">
+            <div class="search-container">
+                <input type="text" id="service-search" placeholder="Buscar servicio...">
+                <button id="search-btn" class="btn primary">Buscar</button>
+            </div>
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="todos">Todos</button>
+                <button class="filter-btn" data-category="agua">Agua</button>
+                <button class="filter-btn" data-category="energia">Energía</button>
+                <button class="filter-btn" data-category="residuos">Residuos</button>
+            </div>
+        </div>
+
         <section class="services-container">
             <h2>Nuestras Soluciones</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-tint"></i>
+            <div class="services-grid" id="services-grid">
+                <!-- Los servicios se cargarán dinámicamente desde JavaScript -->
+            </div>
+
+            <div class="new-service-form">
+                <h3>Añadir nuevo servicio</h3>
+                <form id="add-service-form">
+                    <div class="form-group">
+                        <label for="service-name">Nombre del servicio:</label>
+                        <input type="text" id="service-name" required>
                     </div>
-                    <h3>EcoAgua</h3>
-                    <p>Sistema de monitoreo de consumo de agua en tiempo real con alertas personalizadas y recomendaciones para la reducción de consumo.</p>
-                </div>
-                
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="form-group">
+                        <label for="service-description">Descripción:</label>
+                        <textarea id="service-description" required></textarea>
                     </div>
-                    <h3>EnergíaSmart</h3>
-                    <p>Plataforma de gestión energética inteligente que optimiza el consumo eléctrico en hogares y edificios comerciales.</p>
-                </div>
-                
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-trash-alt"></i>
+                    <div class="form-group">
+                        <label for="service-category">Categoría:</label>
+                        <select id="service-category">
+                            <option value="agua">Agua</option>
+                            <option value="energia">Energía</option>
+                            <option value="residuos">Residuos</option>
+                            <option value="educacion">Educación</option>
+                        </select>
                     </div>
-                    <h3>ReciclaYA</h3>
-                    <p>Aplicación móvil para la gestión eficiente de residuos con sistema de seguimiento y recompensas por reciclaje.</p>
-                </div>
-                
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                    <div class="form-group">
+                        <label for="service-icon">Icono:</label>
+                        <select id="service-icon">
+                            <option value="fa-tint">Gota de agua</option>
+                            <option value="fa-bolt">Rayo</option>
+                            <option value="fa-trash-alt">Basura</option>
+                            <option value="fa-graduation-cap">Educación</option>
+                            <option value="fa-lightbulb">Bombilla</option>
+                        </select>
                     </div>
-                    <h3>EcoEduca</h3>
-                    <p>Talleres y programas educativos para comunidades sobre uso responsable de servicios públicos y sostenibilidad.</p>
-                </div>
+                    <button type="submit" class="btn primary">Añadir Servicio</button>
+                </form>
             </div>
         </section>
 
@@ -79,6 +96,33 @@
             
             <div class="testimonials-controls">
                 <button id="show-more-btn" class="btn primary">Mostrar más testimonios</button>
+                <button id="add-testimonial-btn" class="btn secondary">Añadir mi testimonio</button>
+            </div>
+
+            <div id="testimonial-form-container" class="testimonial-form-container" style="display: none;">
+                <h3>Añadir tu testimonio</h3>
+                <form id="add-testimonial-form">
+                    <div class="form-group">
+                        <label for="testimonial-name">Tu nombre:</label>
+                        <input type="text" id="testimonial-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonial-comment">Comentario:</label>
+                        <textarea id="testimonial-comment" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="testimonial-rating">Calificación:</label>
+                        <div class="rating-selector" id="rating-selector">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input type="hidden" id="testimonial-rating" value="0">
+                    </div>
+                    <button type="submit" class="btn primary">Enviar Testimonio</button>
+                </form>
             </div>
         </section>
     </main>
@@ -111,6 +155,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Datos de servicios
+            const services = [
+                {
+                    name: "EcoAgua",
+                    description: "Sistema de monitoreo de consumo de agua en tiempo real con alertas personalizadas y recomendaciones para la reducción de consumo.",
+                    icon: "fa-tint",
+                    category: "agua"
+                },
+                {
+                    name: "EnergíaSmart",
+                    description: "Plataforma de gestión energética inteligente que optimiza el consumo eléctrico en hogares y edificios comerciales.",
+                    icon: "fa-bolt",
+                    category: "energia"
+                },
+                {
+                    name: "ReciclaYA",
+                    description: "Aplicación móvil para la gestión eficiente de residuos con sistema de seguimiento y recompensas por reciclaje.",
+                    icon: "fa-trash-alt",
+                    category: "residuos"
+                },
+                {
+                    name: "EcoEduca",
+                    description: "Talleres y programas educativos para comunidades sobre uso responsable de servicios públicos y sostenibilidad.",
+                    icon: "fa-graduation-cap",
+                    category: "educacion"
+                }
+            ];
+
+            // Datos de testimonios
             const testimonials = [
                 {
                     name: "María González",
@@ -143,7 +216,146 @@
                     rating: 4
                 }
             ];
+
+            // Seleccionamos el contenedor de servicios
+            const servicesGrid = document.getElementById('services-grid');
             
+            // Función para mostrar servicios
+            function displayServices(servicesList) {
+                // Limpiamos el contenedor
+                servicesGrid.innerHTML = '';
+                
+                // Generamos los elementos de servicio
+                servicesList.forEach((service, index) => {
+                    // Creamos el elemento del servicio
+                    const serviceElement = document.createElement('div');
+                    serviceElement.className = 'service-item';
+                    serviceElement.dataset.category = service.category;
+                    serviceElement.setAttribute('id', `service-${index}`);
+                    
+                    // Añadimos el contenido HTML
+                    serviceElement.innerHTML = `
+                        <div class="service-icon">
+                            <i class="fas ${service.icon}"></i>
+                        </div>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <div class="service-actions">
+                            <button class="btn secondary details-btn">Detalles</button>
+                            <button class="btn remove-btn">Eliminar</button>
+                        </div>
+                    `;
+                    
+                    // Agregamos el elemento al grid
+                    servicesGrid.appendChild(serviceElement);
+                    
+                    // Añadimos evento al botón de detalles
+                    const detailsBtn = serviceElement.querySelector('.details-btn');
+                    detailsBtn.addEventListener('click', function() {
+                        alert(`${service.name}\n\nCategoría: ${service.category}\n\n${service.description}`);
+                    });
+                    
+                    // Añadimos evento al botón de eliminar
+                    const removeBtn = serviceElement.querySelector('.remove-btn');
+                    removeBtn.addEventListener('click', function() {
+                        // Confirmamos antes de eliminar
+                        if (confirm(`¿Estás seguro de que deseas eliminar el servicio "${service.name}"?`)) {
+                            // Eliminamos el elemento
+                            servicesGrid.removeChild(serviceElement);
+                            
+                            // También lo eliminamos del array de servicios
+                            services.splice(index, 1);
+                            
+                            // Mostramos mensaje de confirmación
+                            alert(`El servicio "${service.name}" ha sido eliminado.`);
+                        }
+                    });
+                });
+            }
+            
+            // Mostramos todos los servicios inicialmente
+            displayServices(services);
+            
+            // Funcionamiento de los botones de filtro
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Quitamos la clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Añadimos la clase active al botón actual
+                    this.classList.add('active');
+                    
+                    const selectedCategory = this.getAttribute('data-category');
+                    
+                    if (selectedCategory === 'todos') {
+                        displayServices(services);
+                    } else {
+                        // Filtramos los servicios
+                        const filteredServices = services.filter(service => 
+                            service.category === selectedCategory
+                        );
+                        displayServices(filteredServices);
+                    }
+                });
+            });
+            
+            // Funcionamiento del buscador
+            const searchBtn = document.getElementById('search-btn');
+            const searchInput = document.getElementById('service-search');
+            
+            searchBtn.addEventListener('click', function() {
+                const searchText = searchInput.value.toLowerCase();
+                
+                if (searchText.trim() === '') {
+                    displayServices(services);
+                    return;
+                }
+                
+                // Filtramos por texto en nombre o descripción
+                const searchResults = services.filter(service => 
+                    service.name.toLowerCase().includes(searchText) || 
+                    service.description.toLowerCase().includes(searchText)
+                );
+                
+                displayServices(searchResults);
+            });
+            
+            // Función para añadir un nuevo servicio
+            const addServiceForm = document.getElementById('add-service-form');
+            
+            addServiceForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Obtenemos los valores del formulario
+                const name = document.getElementById('service-name').value;
+                const description = document.getElementById('service-description').value;
+                const category = document.getElementById('service-category').value;
+                const icon = document.getElementById('service-icon').value;
+                
+                // Creamos el nuevo servicio
+                const newService = {
+                    name,
+                    description,
+                    icon,
+                    category
+                };
+                
+                // Añadimos al array de servicios
+                services.push(newService);
+                
+                // Actualizamos la visualización
+                displayServices(services);
+                
+                // Limpiamos el formulario
+                addServiceForm.reset();
+                
+                // Mostramos un mensaje de confirmación
+                alert(`El servicio "${name}" ha sido añadido correctamente.`);
+            });
+
+            // Funciones para los testimonios
             const testimonialsContainer = document.getElementById('testimonials-container');
             const showMoreBtn = document.getElementById('show-more-btn');
             
@@ -154,6 +366,7 @@
                     const testimonial = testimonials[i];
                     const testimonialElement = document.createElement('div');
                     testimonialElement.className = 'testimonial-card';
+                    testimonialElement.setAttribute('data-id', i);
                     
                     let starsHtml = '';
                     for(let s = 0; s < testimonial.rating; s++) {
@@ -168,15 +381,44 @@
                             <p class="testimonial-text">"${testimonial.comment}"</p>
                             <div class="testimonial-rating">${starsHtml}</div>
                             <h4 class="testimonial-name">${testimonial.name}</h4>
+                            <button class="delete-testimonial-btn" title="Eliminar testimonio">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
                     `;
                     
                     testimonialsContainer.appendChild(testimonialElement);
+                    
+                    // Añadimos evento al botón de eliminar
+                    const deleteBtn = testimonialElement.querySelector('.delete-testimonial-btn');
+                    deleteBtn.addEventListener('click', function() {
+                        if (confirm('¿Estás seguro de que deseas eliminar este testimonio?')) {
+                            // Obtenemos el ID del testimonio
+                            const id = parseInt(testimonialElement.getAttribute('data-id'));
+                            
+                            // Eliminamos el elemento del DOM
+                            testimonialsContainer.removeChild(testimonialElement);
+                            
+                            // Eliminamos del array
+                            testimonials.splice(id, 1);
+                            
+                            // Actualizamos el contador
+                            displayedTestimonials--;
+                            
+                            // Actualizamos todos los testimonios para mantener los IDs correctos
+                            testimonialsContainer.innerHTML = '';
+                            displayedTestimonials = 0;
+                            displayTestimonials(0, displayedTestimonials + 3);
+                        }
+                    });
+                    
                     displayedTestimonials++;
                 }
                 
                 if(displayedTestimonials >= testimonials.length) {
                     showMoreBtn.style.display = 'none';
+                } else {
+                    showMoreBtn.style.display = 'inline-block';
                 }
             }
             
@@ -186,6 +428,106 @@
             // Evento para mostrar más testimonios
             showMoreBtn.addEventListener('click', function() {
                 displayTestimonials(displayedTestimonials, 3);
+            });
+
+            // Manejo del formulario de testimonios
+            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
+            const testimonialForm = document.getElementById('testimonial-form-container');
+            
+            addTestimonialBtn.addEventListener('click', function() {
+                // Alternamos la visibilidad del formulario
+                if (testimonialForm.style.display === 'none' || testimonialForm.style.display === '') {
+                    testimonialForm.style.display = 'block';
+                    this.textContent = 'Cancelar';
+                } else {
+                    testimonialForm.style.display = 'none';
+                    this.textContent = 'Añadir mi testimonio';
+                }
+            });
+
+            // Manejo de la selección de estrellas
+            const ratingStars = document.querySelectorAll('#rating-selector i');
+            const ratingInput = document.getElementById('testimonial-rating');
+            
+            ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    
+                    // Actualizamos el valor del input oculto
+                    ratingInput.value = rating;
+                    
+                    // Actualizamos la visualización de las estrellas
+                    ratingStars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.className = 'fas fa-star';
+                        } else {
+                            s.className = 'far fa-star';
+                        }
+                    });
+                });
+                
+                // Añadimos efecto hover
+                star.addEventListener('mouseenter', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    
+                    ratingStars.forEach((s, index) => {
+                        if (index < rating) {
+                            s.style.color = '#f1c40f';
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseleave', function() {
+                    ratingStars.forEach(s => {
+                        s.style.color = '';
+                    });
+                });
+            });
+            
+            // Manejo del envío del formulario de testimonio
+            const addTestimonialForm = document.getElementById('add-testimonial-form');
+            
+            addTestimonialForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Obtenemos los valores del formulario
+                const name = document.getElementById('testimonial-name').value;
+                const comment = document.getElementById('testimonial-comment').value;
+                const rating = parseInt(document.getElementById('testimonial-rating').value);
+                
+                // Validaciones básicas
+                if (!name || !comment || rating < 1) {
+                    alert('Por favor, completa todos los campos y selecciona una calificación.');
+                    return;
+                }
+                
+                // Creamos el nuevo testimonio
+                const newTestimonial = {
+                    name,
+                    comment,
+                    rating
+                };
+                
+                // Añadimos al array de testimonios
+                testimonials.push(newTestimonial);
+                
+                // Actualizamos la visualización
+                testimonialForm.style.display = 'none';
+                addTestimonialBtn.textContent = 'Añadir mi testimonio';
+                
+                // Limpiamos y ocultamos el formulario
+                addTestimonialForm.reset();
+                ratingStars.forEach(s => {
+                    s.className = 'far fa-star';
+                });
+                
+                // Mostramos el nuevo testimonio
+                testimonialsContainer.innerHTML = '';
+                displayedTestimonials = 0;
+                displayTestimonials(0, testimonials.length < 3 ? testimonials.length : 3);
+                
+                // Mensaje de confirmación
+                alert('¡Gracias por compartir tu experiencia! Tu testimonio ha sido añadido.');
             });
         });
     </script>
