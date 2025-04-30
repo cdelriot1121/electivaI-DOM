@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios y Productos - EcoServicios</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles/services-products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h2>GestionaTusServicios</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="ourteam.html">Nuestro Equipo</a></li>
+                    <li><a href="services-products.html" class="active">Servicios</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero services-hero">
+            <h1>Servicios y Productos</h1>
+            <p class="subtitle">Soluciones inteligentes para la gestión de servicios públicos</p>
+        </section>
+
+        <section class="services-container">
+            <h2>Nuestras Soluciones</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>EcoAgua</h3>
+                    <p>Sistema de monitoreo de consumo de agua en tiempo real con alertas personalizadas y recomendaciones para la reducción de consumo.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>EnergíaSmart</h3>
+                    <p>Plataforma de gestión energética inteligente que optimiza el consumo eléctrico en hogares y edificios comerciales.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-trash-alt"></i>
+                    </div>
+                    <h3>ReciclaYA</h3>
+                    <p>Aplicación móvil para la gestión eficiente de residuos con sistema de seguimiento y recompensas por reciclaje.</p>
+                </div>
+                
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>EcoEduca</h3>
+                    <p>Talleres y programas educativos para comunidades sobre uso responsable de servicios públicos y sostenibilidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <h2>Testimonios de Usuarios</h2>
+            <p>Conoce las experiencias de quienes ya implementaron nuestras soluciones</p>
+            
+            <div id="testimonials-container" class="testimonials-container">
+                <!-- Los testimonios se cargarán dinámicamente aquí -->
+            </div>
+            
+            <div class="testimonials-controls">
+                <button id="show-more-btn" class="btn primary">Mostrar más testimonios</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <h2>GestionaTusServicios</h2>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li><a href="ourteam.html">Nuestro Equipo</a></li>
+                    <li><a href="services-products.html">Servicios</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-envelope"></i> info@servicios.com</p>
+                <p><i class="fas fa-phone"></i> +1 111 1111</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 GestionaTusServicios - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = [
+                {
+                    name: "María González",
+                    comment: "Gracias a EcoAgua redujimos nuestro consumo de agua en un 30% en apenas 3 meses. Las alertas en tiempo real son muy útiles.",
+                    rating: 5
+                },
+                {
+                    name: "Juan Pérez",
+                    comment: "EnergíaSmart nos ha permitido ahorrar considerablemente en nuestra factura eléctrica. El sistema es muy intuitivo y fácil de usar.",
+                    rating: 5
+                },
+                {
+                    name: "Laura Sánchez",
+                    comment: "Los talleres de EcoEduca han transformado la manera en que nuestra comunidad gestiona los servicios públicos. Altamente recomendado.",
+                    rating: 4
+                },
+                {
+                    name: "Roberto Díaz",
+                    comment: "ReciclaYA ha hecho que el reciclaje sea más divertido para toda la familia. Los niños están muy motivados con el sistema de recompensas.",
+                    rating: 5
+                },
+                {
+                    name: "Patricia Ramos",
+                    comment: "El soporte técnico de EcoServicios es excepcional. Siempre están disponibles para resolver cualquier duda.",
+                    rating: 4
+                },
+                {
+                    name: "Daniel Torres",
+                    comment: "Las recomendaciones personalizadas que ofrece EnergíaSmart son muy acertadas y fáciles de implementar.",
+                    rating: 4
+                }
+            ];
+            
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const showMoreBtn = document.getElementById('show-more-btn');
+            
+            let displayedTestimonials = 0;
+            
+            function displayTestimonials(start, count) {
+                for(let i = start; i < start + count && i < testimonials.length; i++) {
+                    const testimonial = testimonials[i];
+                    const testimonialElement = document.createElement('div');
+                    testimonialElement.className = 'testimonial-card';
+                    
+                    let starsHtml = '';
+                    for(let s = 0; s < testimonial.rating; s++) {
+                        starsHtml += '<i class="fas fa-star"></i>';
+                    }
+                    for(let s = testimonial.rating; s < 5; s++) {
+                        starsHtml += '<i class="far fa-star"></i>';
+                    }
+                    
+                    testimonialElement.innerHTML = `
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"${testimonial.comment}"</p>
+                            <div class="testimonial-rating">${starsHtml}</div>
+                            <h4 class="testimonial-name">${testimonial.name}</h4>
+                        </div>
+                    `;
+                    
+                    testimonialsContainer.appendChild(testimonialElement);
+                    displayedTestimonials++;
+                }
+                
+                if(displayedTestimonials >= testimonials.length) {
+                    showMoreBtn.style.display = 'none';
+                }
+            }
+            
+            // Mostrar los primeros 3 testimonios inicialmente
+            displayTestimonials(0, 3);
+            
+            // Evento para mostrar más testimonios
+            showMoreBtn.addEventListener('click', function() {
+                displayTestimonials(displayedTestimonials, 3);
+            });
+        });
+    </script>
+</body>
+</html>
