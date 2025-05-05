@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios y Productos - GestionaTusServicios</title>
+    <title>Services and Products - ManageYourServices</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="styles/services-products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,14 +13,14 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-leaf"></i>
-                <h2>GestionaTusServicios</h2>
+                <h2>ManageYourServices</h2>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="ourteam.html">Nuestro Equipo</a></li>
-                    <li><a href="services-products.html" class="active">Servicios</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="ourteam.html">Our Team</a></li>
+                    <li><a href="services-products.html" class="active">Services</a></li>
                 </ul>
             </div>
         </nav>
@@ -28,90 +28,90 @@
     
     <main>
         <section class="hero services-hero">
-            <h1>Servicios y Productos</h1>
-            <p class="subtitle">Soluciones inteligentes para la gestión de servicios públicos</p>
+            <h1>Services and Products</h1>
+            <p class="subtitle">Smart solutions for public service management</p>
         </section>
 
         <div class="services-controls">
             <div class="search-container">
-                <input type="text" id="service-search" placeholder="Buscar servicio...">
-                <button id="search-btn" class="btn primary">Buscar</button>
+                <input type="text" id="service-search" placeholder="Search service...">
+                <button id="search-btn" class="btn primary">Search</button>
             </div>
             <div class="category-filter">
-                <button class="filter-btn active" data-category="todos">Todos</button>
-                <button class="filter-btn" data-category="agua">Agua</button>
-                <button class="filter-btn" data-category="energia">Energía</button>
-                <button class="filter-btn" data-category="residuos">Residuos</button>
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="water">Water</button>
+                <button class="filter-btn" data-category="energy">Energy</button>
+                <button class="filter-btn" data-category="waste">Waste</button>
             </div>
         </div>
 
         <section class="services-container">
-            <h2>Nuestras Soluciones</h2>
+            <h2>Our Solutions</h2>
             <div class="services-grid" id="services-grid">
-                <!-- Los servicios se cargarán dinámicamente desde JavaScript -->
+                <!-- Services will be dynamically loaded from JavaScript -->
             </div>
 
             <div class="new-service-form">
-                <h3>Añadir nuevo servicio</h3>
+                <h3>Add New Service</h3>
                 <form id="add-service-form">
                     <div class="form-group">
-                        <label for="service-name">Nombre del servicio:</label>
+                        <label for="service-name">Service Name:</label>
                         <input type="text" id="service-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="service-description">Descripción:</label>
+                        <label for="service-description">Description:</label>
                         <textarea id="service-description" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="service-category">Categoría:</label>
+                        <label for="service-category">Category:</label>
                         <select id="service-category">
-                            <option value="agua">Agua</option>
-                            <option value="energia">Energía</option>
-                            <option value="residuos">Residuos</option>
-                            <option value="educacion">Educación</option>
+                            <option value="water">Water</option>
+                            <option value="energy">Energy</option>
+                            <option value="waste">Waste</option>
+                            <option value="education">Education</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="service-icon">Icono:</label>
+                        <label for="service-icon">Icon:</label>
                         <select id="service-icon">
-                            <option value="fa-tint">Gota de agua</option>
-                            <option value="fa-bolt">Rayo</option>
-                            <option value="fa-trash-alt">Basura</option>
-                            <option value="fa-graduation-cap">Educación</option>
-                            <option value="fa-lightbulb">Bombilla</option>
+                            <option value="fa-tint">Water Drop</option>
+                            <option value="fa-bolt">Lightning</option>
+                            <option value="fa-trash-alt">Trash</option>
+                            <option value="fa-graduation-cap">Education</option>
+                            <option value="fa-lightbulb">Lightbulb</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn primary">Añadir Servicio</button>
+                    <button type="submit" class="btn primary">Add Service</button>
                 </form>
             </div>
         </section>
 
         <section class="testimonials-section">
-            <h2>Testimonios de Usuarios</h2>
-            <p>Conoce las experiencias de quienes ya implementaron nuestras soluciones</p>
+            <h2>User Testimonials</h2>
+            <p>Discover the experiences of those who have already implemented our solutions</p>
             
             <div id="testimonials-container" class="testimonials-container">
-                <!-- Los testimonios se cargarán dinámicamente aquí -->
+                <!-- Testimonials will be dynamically loaded here -->
             </div>
             
             <div class="testimonials-controls">
-                <button id="show-more-btn" class="btn primary">Mostrar más testimonios</button>
-                <button id="add-testimonial-btn" class="btn secondary">Añadir mi testimonio</button>
+                <button id="show-more-btn" class="btn primary">Show More Testimonials</button>
+                <button id="add-testimonial-btn" class="btn secondary">Add My Testimonial</button>
             </div>
 
             <div id="testimonial-form-container" class="testimonial-form-container" style="display: none;">
-                <h3>Añadir tu testimonio</h3>
+                <h3>Add Your Testimonial</h3>
                 <form id="add-testimonial-form">
                     <div class="form-group">
-                        <label for="testimonial-name">Tu nombre:</label>
+                        <label for="testimonial-name">Your Name:</label>
                         <input type="text" id="testimonial-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="testimonial-comment">Comentario:</label>
+                        <label for="testimonial-comment">Comment:</label>
                         <textarea id="testimonial-comment" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="testimonial-rating">Calificación:</label>
+                        <label for="testimonial-rating">Rating:</label>
                         <div class="rating-selector" id="rating-selector">
                             <i class="far fa-star" data-rating="1"></i>
                             <i class="far fa-star" data-rating="2"></i>
@@ -121,7 +121,7 @@
                         </div>
                         <input type="hidden" id="testimonial-rating" value="0">
                     </div>
-                    <button type="submit" class="btn primary">Enviar Testimonio</button>
+                    <button type="submit" class="btn primary">Submit Testimonial</button>
                 </form>
             </div>
         </section>
@@ -131,25 +131,25 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <i class="fas fa-leaf"></i>
-                <h2>GestionaTusServicios</h2>
+                <h2>ManageYourServices</h2>
             </div>
             <div class="footer-links">
-                <h3>Enlaces rápidos</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="ourteam.html">Nuestro Equipo</a></li>
-                    <li><a href="services-products.html">Servicios</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="ourteam.html">Our Team</a></li>
+                    <li><a href="services-products.html">Services</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contacto</h3>
-                <p><i class="fas fa-envelope"></i> info@servicios.com</p>
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@services.com</p>
                 <p><i class="fas fa-phone"></i> +1 111 1111</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 GestionaTusServicios - Todos los derechos reservados</p>
+            <p>&copy; 2025 ManageYourServices - All rights reserved</p>
         </div>
     </footer>
 
@@ -220,57 +220,84 @@
             // Seleccionamos el contenedor de servicios
             const servicesGrid = document.getElementById('services-grid');
             
-            // Función para mostrar servicios
+            // Reemplaza la función displayServices por esta versión:
             function displayServices(servicesList) {
                 // Limpiamos el contenedor
                 servicesGrid.innerHTML = '';
                 
-                // Generamos los elementos de servicio
-                servicesList.forEach((service, index) => {
+                // Generamos los elementos de servicio uno por uno
+                for (let i = 0; i < servicesList.length; i++) {
+                    const service = servicesList[i];
+                    
                     // Creamos el elemento del servicio
                     const serviceElement = document.createElement('div');
-                    serviceElement.className = 'service-item';
-                    serviceElement.dataset.category = service.category;
-                    serviceElement.setAttribute('id', `service-${index}`);
+                    serviceElement.setAttribute('class', 'service-item');
+                    serviceElement.setAttribute('data-category', service.category);
+                    serviceElement.setAttribute('id', 'service-' + i);
                     
-                    // Añadimos el contenido HTML
-                    serviceElement.innerHTML = `
-                        <div class="service-icon">
-                            <i class="fas ${service.icon}"></i>
-                        </div>
-                        <h3>${service.name}</h3>
-                        <p>${service.description}</p>
-                        <div class="service-actions">
-                            <button class="btn secondary details-btn">Detalles</button>
-                            <button class="btn remove-btn">Eliminar</button>
-                        </div>
-                    `;
+                    // Crear el icono
+                    const iconDiv = document.createElement('div');
+                    iconDiv.setAttribute('class', 'service-icon');
                     
-                    // Agregamos el elemento al grid
+                    const iconElement = document.createElement('i');
+                    iconElement.setAttribute('class', 'fas ' + service.icon);
+                    iconDiv.appendChild(iconElement);
+                    
+                    // Crear el título
+                    const titleElement = document.createElement('h3');
+                    titleElement.textContent = service.name;
+                    
+                    // Crear la descripción
+                    const descElement = document.createElement('p');
+                    descElement.textContent = service.description;
+                    
+                    // Crear contenedor de acciones
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.setAttribute('class', 'service-actions');
+                    
+                    // Botón de detalles
+                    const detailsBtn = document.createElement('button');
+                    detailsBtn.setAttribute('class', 'btn secondary details-btn');
+                    detailsBtn.textContent = 'Detalles';
+                    
+                    // Botón eliminar
+                    const removeBtn = document.createElement('button');
+                    removeBtn.setAttribute('class', 'btn remove-btn');
+                    removeBtn.textContent = 'Eliminar';
+                    
+                    // Añadir botones al contenedor
+                    actionsDiv.appendChild(detailsBtn);
+                    actionsDiv.appendChild(removeBtn);
+                    
+                    // Añadir todos los elementos al servicio
+                    serviceElement.appendChild(iconDiv);
+                    serviceElement.appendChild(titleElement);
+                    serviceElement.appendChild(descElement);
+                    serviceElement.appendChild(actionsDiv);
+                    
+                    // Añadir al grid principal
                     servicesGrid.appendChild(serviceElement);
                     
-                    // Añadimos evento al botón de detalles
-                    const detailsBtn = serviceElement.querySelector('.details-btn');
+                    // Añadir evento al botón de detalles
                     detailsBtn.addEventListener('click', function() {
-                        alert(`${service.name}\n\nCategoría: ${service.category}\n\n${service.description}`);
+                        alert(service.name + '\n\nCategoría: ' + service.category + '\n\n' + service.description);
                     });
                     
-                    // Añadimos evento al botón de eliminar
-                    const removeBtn = serviceElement.querySelector('.remove-btn');
+                    // Añadir evento al botón de eliminar
                     removeBtn.addEventListener('click', function() {
                         // Confirmamos antes de eliminar
-                        if (confirm(`¿Estás seguro de que deseas eliminar el servicio "${service.name}"?`)) {
+                        if (confirm('¿Estás seguro de que deseas eliminar el servicio "' + service.name + '"?')) {
                             // Eliminamos el elemento
                             servicesGrid.removeChild(serviceElement);
                             
                             // También lo eliminamos del array de servicios
-                            services.splice(index, 1);
+                            services.splice(i, 1);
                             
                             // Mostramos mensaje de confirmación
-                            alert(`El servicio "${service.name}" ha sido eliminado.`);
+                            alert('El servicio "' + service.name + '" ha sido eliminado.');
                         }
                     });
-                });
+                }
             }
             
             // Mostramos todos los servicios inicialmente
@@ -364,33 +391,63 @@
             function displayTestimonials(start, count) {
                 for(let i = start; i < start + count && i < testimonials.length; i++) {
                     const testimonial = testimonials[i];
+                    
+                    // Crear el elemento de testimonio
                     const testimonialElement = document.createElement('div');
-                    testimonialElement.className = 'testimonial-card';
+                    testimonialElement.setAttribute('class', 'testimonial-card');
                     testimonialElement.setAttribute('data-id', i);
                     
-                    let starsHtml = '';
-                    for(let s = 0; s < testimonial.rating; s++) {
-                        starsHtml += '<i class="fas fa-star"></i>';
-                    }
-                    for(let s = testimonial.rating; s < 5; s++) {
-                        starsHtml += '<i class="far fa-star"></i>';
+                    // Crear contenedor del contenido
+                    const contentDiv = document.createElement('div');
+                    contentDiv.setAttribute('class', 'testimonial-content');
+                    
+                    // Crear texto del testimonio
+                    const textP = document.createElement('p');
+                    textP.setAttribute('class', 'testimonial-text');
+                    textP.textContent = '"' + testimonial.comment + '"';
+                    
+                    // Crear calificación con estrellas
+                    const ratingDiv = document.createElement('div');
+                    ratingDiv.setAttribute('class', 'testimonial-rating');
+                    
+                    // Añadir estrellas según puntuación
+                    for(let s = 0; s < 5; s++) {
+                        const star = document.createElement('i');
+                        if(s < testimonial.rating) {
+                            star.setAttribute('class', 'fas fa-star');
+                        } else {
+                            star.setAttribute('class', 'far fa-star');
+                        }
+                        ratingDiv.appendChild(star);
                     }
                     
-                    testimonialElement.innerHTML = `
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">"${testimonial.comment}"</p>
-                            <div class="testimonial-rating">${starsHtml}</div>
-                            <h4 class="testimonial-name">${testimonial.name}</h4>
-                            <button class="delete-testimonial-btn" title="Eliminar testimonio">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
+                    // Crear nombre del testimonio
+                    const nameH4 = document.createElement('h4');
+                    nameH4.setAttribute('class', 'testimonial-name');
+                    nameH4.textContent = testimonial.name;
                     
+                    // Crear botón de eliminar
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.setAttribute('class', 'delete-testimonial-btn');
+                    deleteBtn.setAttribute('title', 'Eliminar testimonio');
+                    
+                    const trashIcon = document.createElement('i');
+                    trashIcon.setAttribute('class', 'fas fa-trash');
+                    deleteBtn.appendChild(trashIcon);
+                    
+                    // Añadir todos los elementos al contenido
+                    contentDiv.appendChild(textP);
+                    contentDiv.appendChild(ratingDiv);
+                    contentDiv.appendChild(nameH4);
+                    contentDiv.appendChild(deleteBtn);
+                    
+                    // Añadir contenido al elemento testimonio
+                    testimonialElement.appendChild(contentDiv);
+                    
+                    // Añadir al contenedor principal
                     testimonialsContainer.appendChild(testimonialElement);
                     
-                    // Añadimos evento al botón de eliminar
-                    const deleteBtn = testimonialElement.querySelector('.delete-testimonial-btn');
+                    // Añadir evento al botón eliminar
                     deleteBtn.addEventListener('click', function() {
                         if (confirm('¿Estás seguro de que deseas eliminar este testimonio?')) {
                             // Obtenemos el ID del testimonio
@@ -415,6 +472,7 @@
                     displayedTestimonials++;
                 }
                 
+                // Mostrar u ocultar el botón "Mostrar más"
                 if(displayedTestimonials >= testimonials.length) {
                     showMoreBtn.style.display = 'none';
                 } else {

@@ -1,7 +1,7 @@
 /* Estilos específicos para la página About Us */
 
 .about-hero {
-    background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://st.depositphotos.com/1038076/4908/i/450/depositphotos_49080337-stock-photo-about-us.jpg');
     background-size: cover;
     background-position: center;
 }
