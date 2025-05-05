@@ -1,7 +1,7 @@
 /* Estilos específicos para la página de inicio */
 
 .hero {
-    background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://images.unsplash.com/photo-1498484502070-2165cb42d504?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://static.vecteezy.com/system/resources/previews/004/960/509/non_2x/public-services-innovations-word-concepts-banner-infrastructure-support-infographics-with-linear-icons-on-blue-background-isolated-creative-typography-outline-color-illustration-with-text-vector.jpg');
     background-size: cover;
     background-position: center;
     padding: 6rem 1rem;
