@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro Equipo - GestionaTusServicios</title>
+    <title>Our Team - ManageYourServices</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="styles/ourteam.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,14 +13,14 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-leaf"></i>
-                <h2>GestionaTusServicios</h2>
+                <h2>ManageYourServices</h2>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="ourteam.html" class="active">Nuestro Equipo</a></li>
-                    <li><a href="services-products.html">Servicios</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="ourteam.html" class="active">Our Team</a></li>
+                    <li><a href="services-products.html">Services</a></li>
                 </ul>
             </div>
         </nav>
@@ -28,16 +28,16 @@
     
     <main>
         <section class="hero team-hero">
-            <h1>Nuestro Equipo</h1>
-            <p class="subtitle">Profesionales comprometidos con la innovación y la sostenibilidad</p>
+            <h1>Our Team</h1>
+            <p class="subtitle">Professionals committed to innovation and sustainability</p>
         </section>
 
         <div class="team-controls">
-            <button id="dark-mode-toggle" class="btn primary">Cambiar modo oscuro</button>
+            <button id="dark-mode-toggle" class="btn primary">Toggle Dark Mode</button>
             <div class="filter-container">
-                <label for="team-filter">Filtrar por rol:</label>
+                <label for="team-filter">Filter by role:</label>
                 <select id="team-filter">
-                    <option value="todos">Todos</option>
+                    <option value="all">All</option>
                     <option value="frontend">Frontend</option>
                     <option value="backend">Backend</option>
                     <option value="fullstack">Full Stack</option>
@@ -46,12 +46,12 @@
         </div>
 
         <section class="team-container" id="team-container">
-            <!-- Los miembros del equipo se cargarán dinámicamente aquí -->
+            <!-- Team members will be dynamically loaded here -->
         </section>
 
         <div class="team-info">
-            <h2>Estadísticas del equipo</h2>
-            <p id="team-stats">Total de miembros: <span id="member-count">0</span></p>
+            <h2>Team Statistics</h2>
+            <p id="team-stats">Total members: <span id="member-count">0</span></p>
         </div>
     </main>
     
@@ -59,89 +59,80 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <i class="fas fa-leaf"></i>
-                <h2>GestionaTusServicios</h2>
+                <h2>ManageYourServices</h2>
             </div>
             <div class="footer-links">
-                <h3>Enlaces rápidos</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="ourteam.html">Nuestro Equipo</a></li>
-                    <li><a href="services-products.html">Servicios</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="ourteam.html">Our Team</a></li>
+                    <li><a href="services-products.html">Services</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h3>Contacto</h3>
-                <p><i class="fas fa-envelope"></i> info@servicios.com</p>
+                <h3>Contact</h3>
+                <p><i class="fas fa-envelope"></i> info@services.com</p>
                 <p><i class="fas fa-phone"></i> +1 111 1111</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 GestionaTusServicios - Todos los derechos reservados</p>
+            <p>&copy; 2025 ManageYourServices - All rights reserved</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Array con datos de los miembros del equipo
             const teamMembers = [
                 {
                     name: "Valeria Hernandez",
-                    role: "Front y Visualización dinámica",
-                    description: "Especialista en desarrollo frontend y creación de interfaces interactivas. Experta en implementación de soluciones visuales dinámicas para optimizar la experiencia del usuario.",
+                    role: "Frontend and Dynamic Visualization",
+                    description: "Specialist in frontend development and creating interactive interfaces. Expert in implementing dynamic visual solutions to optimize user experience.",
                     image: "https://avatars.githubusercontent.com/u/178744062?v=4",
-                    email: "valeria@servicios.com",
+                    email: "valeria@services.com",
                     github: "https://github.com/valeria",
                     category: "frontend"
                 },
                 {
                     name: "Willys Hurtado",
-                    role: "Investigador Full Stack",
-                    description: "Desarrollador integral con amplio conocimiento en tecnologías frontend y backend. Lidera la investigación e implementación de nuevas soluciones tecnológicas para la gestión de servicios públicos.",
+                    role: "Full Stack Researcher",
+                    description: "Full-stack developer with extensive knowledge in frontend and backend technologies. Leads research and implementation of new technological solutions for public service management.",
                     image: "https://avatars.githubusercontent.com/u/167822997?v=4",
-                    email: "willys@servicios.com",
+                    email: "willys@services.com",
                     github: "https://github.com/willys",
                     category: "fullstack"
                 },
                 {
                     name: "Giovanny Orozco",
-                    role: "Front, Visualización de datos y esquemas dinámicos",
-                    description: "Especialista en crear representaciones visuales de datos complejos. Ha desarrollado sistemas de visualización interactivos que facilitan la comprensión de patrones de consumo de servicios públicos.",
+                    role: "Frontend, Data Visualization, and Dynamic Schemes",
+                    description: "Specialist in creating visual representations of complex data. Developed interactive visualization systems to facilitate understanding of public service consumption patterns.",
                     image: "https://avatars.githubusercontent.com/u/167822703?v=4",
-                    email: "giovanny@servicios.com",
+                    email: "giovanny@services.com",
                     github: "https://github.com/giovanny",
                     category: "frontend"
                 },
                 {
-                    name: "Carlos Del rio",
-                    role: "Backend, Administrador DevOps",
-                    description: "Experto en desarrollo backend y administración de infraestructuras DevOps. Responsable de la arquitectura de sistemas y la implementación de procesos de integración y despliegue continuo.",
+                    name: "Carlos Del Rio",
+                    role: "Backend, DevOps Administrator",
+                    description: "Expert in backend development and DevOps infrastructure management. Responsible for system architecture and implementing continuous integration and deployment processes.",
                     image: "https://avatars.githubusercontent.com/u/137203832?v=4",
-                    email: "carlos@servicios.com",
+                    email: "carlos@services.com",
                     github: "https://github.com/carlos",
                     category: "backend"
                 }
             ];
 
-            // Seleccionar el contenedor de miembros usando querySelector
             const teamContainer = document.querySelector('#team-container');
             
-            // Función para crear elementos del DOM y mostrar miembros
             function displayTeamMembers(members) {
-                // Primero limpiamos el contenedor
                 teamContainer.innerHTML = '';
-                
-                // Actualizamos el contador de miembros
                 const memberCountElement = document.getElementById('member-count');
                 memberCountElement.textContent = members.length;
                 
-                // Creamos un elemento para cada miembro
                 members.forEach(member => {
-                    // Creamos el contenedor principal de cada miembro usando createElement
                     const memberDiv = document.createElement('div');
                     memberDiv.className = 'team-member';
                     
-                    // Creamos la estructura interna usando innerHTML
                     memberDiv.innerHTML = `
                         <div class="member-card">
                             <div class="member-front">
@@ -163,13 +154,10 @@
                         </div>
                     `;
                     
-                    // Añadimos el elemento al contenedor usando appendChild
                     teamContainer.appendChild(memberDiv);
 
-                    // Seleccionamos el elemento card recién creado
                     const card = memberDiv.querySelector('.member-card');
                     
-                    // Añadimos eventos de ratón usando addEventListener
                     card.addEventListener('mouseenter', function() {
                         this.classList.add('flipped');
                     });
@@ -178,28 +166,22 @@
                         this.classList.remove('flipped');
                     });
 
-                    // Añadimos un evento de clic para mostrar información
                     card.addEventListener('click', function() {
-                        // Creamos un alert con información del miembro
-                        alert(`${member.name}\nRol: ${member.role}\nContacto: ${member.email}`);
+                        alert(`${member.name}\nRole: ${member.role}\nContact: ${member.email}`);
                     });
                 });
             }
             
-            // Mostramos todos los miembros inicialmente
             displayTeamMembers(teamMembers);
             
-            // Seleccionamos el select de filtro
             const teamFilter = document.getElementById('team-filter');
             
-            // Añadimos event listener para el cambio de filtro
             teamFilter.addEventListener('change', function() {
                 const selectedCategory = this.value;
                 
-                if (selectedCategory === 'todos') {
+                if (selectedCategory === 'all') {
                     displayTeamMembers(teamMembers);
                 } else {
-                    // Filtramos los miembros según la categoría seleccionada
                     const filteredMembers = teamMembers.filter(member => 
                         member.category === selectedCategory
                     );
@@ -207,39 +189,30 @@
                 }
             });
 
-            // Implementamos el modo oscuro
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             
             darkModeToggle.addEventListener('click', function() {
-                // Seleccionamos el body
                 const body = document.querySelector('body');
-                
-                // Alternamos la clase dark-mode
                 body.classList.toggle('dark-mode');
                 
-                // Cambiamos el texto del botón usando textContent
                 if (body.classList.contains('dark-mode')) {
-                    this.textContent = 'Cambiar a modo claro';
-                    // Cambiamos los atributos del botón con setAttribute
+                    this.textContent = 'Switch to Light Mode';
                     this.setAttribute('class', 'btn secondary');
                 } else {
-                    this.textContent = 'Cambiar a modo oscuro';
+                    this.textContent = 'Switch to Dark Mode';
                     this.setAttribute('class', 'btn primary');
                 }
                 
-                // Seleccionamos todas las tarjetas y cambiamos su estilo
                 const allCards = document.querySelectorAll('.member-card');
                 
                 allCards.forEach(card => {
                     if (body.classList.contains('dark-mode')) {
-                        // Modificamos estilos directamente
                         card.querySelector('.member-front').style.backgroundColor = '#2c3e50';
                         card.querySelector('.member-back').style.backgroundColor = '#34495e';
                         card.querySelectorAll('h3, .member-role').forEach(el => {
                             el.style.color = '#ecf0f1';
                         });
                     } else {
-                        // Reseteamos los estilos
                         card.querySelector('.member-front').style.backgroundColor = '';
                         card.querySelector('.member-back').style.backgroundColor = '';
                         card.querySelectorAll('h3, .member-role').forEach(el => {
@@ -249,18 +222,15 @@
                 });
             });
 
-            // Crear un nuevo evento para actualizar estadísticas
             document.querySelector('.team-info').addEventListener('click', function() {
                 const statsElement = document.getElementById('team-stats');
                 
-                // Calculamos estadísticas adicionales
                 const frontendCount = teamMembers.filter(m => m.category === 'frontend').length;
                 const backendCount = teamMembers.filter(m => m.category === 'backend').length;
                 const fullstackCount = teamMembers.filter(m => m.category === 'fullstack').length;
                 
-                // Actualizamos el contenido usando innerHTML
                 statsElement.innerHTML = `
-                    Total de miembros: <span id="member-count">${teamMembers.length}</span><br>
+                    Total members: <span id="member-count">${teamMembers.length}</span><br>
                     Frontend: ${frontendCount}<br>
                     Backend: ${backendCount}<br>
                     Full Stack: ${fullstackCount}
