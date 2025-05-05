@@ -220,57 +220,84 @@
             // Seleccionamos el contenedor de servicios
             const servicesGrid = document.getElementById('services-grid');
             
-            // Función para mostrar servicios
+            // Reemplaza la función displayServices por esta versión:
             function displayServices(servicesList) {
                 // Limpiamos el contenedor
                 servicesGrid.innerHTML = '';
                 
-                // Generamos los elementos de servicio
-                servicesList.forEach((service, index) => {
+                // Generamos los elementos de servicio uno por uno
+                for (let i = 0; i < servicesList.length; i++) {
+                    const service = servicesList[i];
+                    
                     // Creamos el elemento del servicio
                     const serviceElement = document.createElement('div');
-                    serviceElement.className = 'service-item';
-                    serviceElement.dataset.category = service.category;
-                    serviceElement.setAttribute('id', `service-${index}`);
+                    serviceElement.setAttribute('class', 'service-item');
+                    serviceElement.setAttribute('data-category', service.category);
+                    serviceElement.setAttribute('id', 'service-' + i);
                     
-                    // Añadimos el contenido HTML
-                    serviceElement.innerHTML = `
-                        <div class="service-icon">
-                            <i class="fas ${service.icon}"></i>
-                        </div>
-                        <h3>${service.name}</h3>
-                        <p>${service.description}</p>
-                        <div class="service-actions">
-                            <button class="btn secondary details-btn">Detalles</button>
-                            <button class="btn remove-btn">Eliminar</button>
-                        </div>
-                    `;
+                    // Crear el icono
+                    const iconDiv = document.createElement('div');
+                    iconDiv.setAttribute('class', 'service-icon');
                     
-                    // Agregamos el elemento al grid
+                    const iconElement = document.createElement('i');
+                    iconElement.setAttribute('class', 'fas ' + service.icon);
+                    iconDiv.appendChild(iconElement);
+                    
+                    // Crear el título
+                    const titleElement = document.createElement('h3');
+                    titleElement.textContent = service.name;
+                    
+                    // Crear la descripción
+                    const descElement = document.createElement('p');
+                    descElement.textContent = service.description;
+                    
+                    // Crear contenedor de acciones
+                    const actionsDiv = document.createElement('div');
+                    actionsDiv.setAttribute('class', 'service-actions');
+                    
+                    // Botón de detalles
+                    const detailsBtn = document.createElement('button');
+                    detailsBtn.setAttribute('class', 'btn secondary details-btn');
+                    detailsBtn.textContent = 'Detalles';
+                    
+                    // Botón eliminar
+                    const removeBtn = document.createElement('button');
+                    removeBtn.setAttribute('class', 'btn remove-btn');
+                    removeBtn.textContent = 'Eliminar';
+                    
+                    // Añadir botones al contenedor
+                    actionsDiv.appendChild(detailsBtn);
+                    actionsDiv.appendChild(removeBtn);
+                    
+                    // Añadir todos los elementos al servicio
+                    serviceElement.appendChild(iconDiv);
+                    serviceElement.appendChild(titleElement);
+                    serviceElement.appendChild(descElement);
+                    serviceElement.appendChild(actionsDiv);
+                    
+                    // Añadir al grid principal
                     servicesGrid.appendChild(serviceElement);
                     
-                    // Añadimos evento al botón de detalles
-                    const detailsBtn = serviceElement.querySelector('.details-btn');
+                    // Añadir evento al botón de detalles
                     detailsBtn.addEventListener('click', function() {
-                        alert(`${service.name}\n\nCategoría: ${service.category}\n\n${service.description}`);
+                        alert(service.name + '\n\nCategoría: ' + service.category + '\n\n' + service.description);
                     });
                     
-                    // Añadimos evento al botón de eliminar
-                    const removeBtn = serviceElement.querySelector('.remove-btn');
+                    // Añadir evento al botón de eliminar
                     removeBtn.addEventListener('click', function() {
                         // Confirmamos antes de eliminar
-                        if (confirm(`¿Estás seguro de que deseas eliminar el servicio "${service.name}"?`)) {
+                        if (confirm('¿Estás seguro de que deseas eliminar el servicio "' + service.name + '"?')) {
                             // Eliminamos el elemento
                             servicesGrid.removeChild(serviceElement);
                             
                             // También lo eliminamos del array de servicios
-                            services.splice(index, 1);
+                            services.splice(i, 1);
                             
                             // Mostramos mensaje de confirmación
-                            alert(`El servicio "${service.name}" ha sido eliminado.`);
+                            alert('El servicio "' + service.name + '" ha sido eliminado.');
                         }
                     });
-                });
+                }
             }
             
             // Mostramos todos los servicios inicialmente
@@ -364,33 +391,63 @@
             function displayTestimonials(start, count) {
                 for(let i = start; i < start + count && i < testimonials.length; i++) {
                     const testimonial = testimonials[i];
+                    
+                    // Crear el elemento de testimonio
                     const testimonialElement = document.createElement('div');
-                    testimonialElement.className = 'testimonial-card';
+                    testimonialElement.setAttribute('class', 'testimonial-card');
                     testimonialElement.setAttribute('data-id', i);
                     
-                    let starsHtml = '';
-                    for(let s = 0; s < testimonial.rating; s++) {
-                        starsHtml += '<i class="fas fa-star"></i>';
-                    }
-                    for(let s = testimonial.rating; s < 5; s++) {
-                        starsHtml += '<i class="far fa-star"></i>';
+                    // Crear contenedor del contenido
+                    const contentDiv = document.createElement('div');
+                    contentDiv.setAttribute('class', 'testimonial-content');
+                    
+                    // Crear texto del testimonio
+                    const textP = document.createElement('p');
+                    textP.setAttribute('class', 'testimonial-text');
+                    textP.textContent = '"' + testimonial.comment + '"';
+                    
+                    // Crear calificación con estrellas
+                    const ratingDiv = document.createElement('div');
+                    ratingDiv.setAttribute('class', 'testimonial-rating');
+                    
+                    // Añadir estrellas según puntuación
+                    for(let s = 0; s < 5; s++) {
+                        const star = document.createElement('i');
+                        if(s < testimonial.rating) {
+                            star.setAttribute('class', 'fas fa-star');
+                        } else {
+                            star.setAttribute('class', 'far fa-star');
+                        }
+                        ratingDiv.appendChild(star);
                     }
                     
-                    testimonialElement.innerHTML = `
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">"${testimonial.comment}"</p>
-                            <div class="testimonial-rating">${starsHtml}</div>
-                            <h4 class="testimonial-name">${testimonial.name}</h4>
-                            <button class="delete-testimonial-btn" title="Eliminar testimonio">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    `;
+                    // Crear nombre del testimonio
+                    const nameH4 = document.createElement('h4');
+                    nameH4.setAttribute('class', 'testimonial-name');
+                    nameH4.textContent = testimonial.name;
                     
+                    // Crear botón de eliminar
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.setAttribute('class', 'delete-testimonial-btn');
+                    deleteBtn.setAttribute('title', 'Eliminar testimonio');
+                    
+                    const trashIcon = document.createElement('i');
+                    trashIcon.setAttribute('class', 'fas fa-trash');
+                    deleteBtn.appendChild(trashIcon);
+                    
+                    // Añadir todos los elementos al contenido
+                    contentDiv.appendChild(textP);
+                    contentDiv.appendChild(ratingDiv);
+                    contentDiv.appendChild(nameH4);
+                    contentDiv.appendChild(deleteBtn);
+                    
+                    // Añadir contenido al elemento testimonio
+                    testimonialElement.appendChild(contentDiv);
+                    
+                    // Añadir al contenedor principal
                     testimonialsContainer.appendChild(testimonialElement);
                     
-                    // Añadimos evento al botón de eliminar
-                    const deleteBtn = testimonialElement.querySelector('.delete-testimonial-btn');
+                    // Añadir evento al botón eliminar
                     deleteBtn.addEventListener('click', function() {
                         if (confirm('¿Estás seguro de que deseas eliminar este testimonio?')) {
                             // Obtenemos el ID del testimonio
@@ -415,6 +472,7 @@
                     displayedTestimonials++;
                 }
                 
+                // Mostrar u ocultar el botón "Mostrar más"
                 if(displayedTestimonials >= testimonials.length) {
                     showMoreBtn.style.display = 'none';
                 } else {
