@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,9 +40,7 @@
         <section class="testimonials-section">
             <h2>User Testimonials</h2>
             <p>Discover the experiences of those who have already implemented our solutions</p>
-            
             <div id="testimonials-container" class="testimonials-container"></div>
-            
             <div class="testimonials-controls">
                 <button id="show-more-btn" class="btn primary">Show More Testimonials</button>
             </div>
@@ -77,25 +74,22 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             const services = [
                 {
                     name: "EcoAgua",
                     description: "Real-time water consumption monitoring system with personalized alerts and recommendations for reducing usage.",
-                    icon: "fa-tint",
-                    category: "water"
+                    icon: "fa-tint"
                 },
                 {
                     name: "EnergíaSmart",
                     description: "Smart energy management platform that optimizes electricity consumption in homes and commercial buildings.",
-                    icon: "fa-bolt",
-                    category: "energy"
+                    icon: "fa-bolt"
                 },
                 {
                     name: "GasOptimizer",
                     description: "Solution focused on reducing gas usage through real-time monitoring, leak detection, and efficiency tips for households.",
-                    icon: "fa-fire",
-                    category: "gas"
+                    icon: "fa-fire"
                 }
             ];
 
@@ -132,103 +126,60 @@
                 }
             ];
 
+            // Render services
             const servicesGrid = document.getElementById('services-grid');
-            
-            function displayServices(servicesList) {
-                servicesGrid.innerHTML = '';
-                
-                for (let i = 0; i < servicesList.length; i++) {
-                    const service = servicesList[i];
-                    
-                    const serviceElement = document.createElement('div');
-                    serviceElement.className = 'service-item';
-                    serviceElement.dataset.category = service.category;
-                    serviceElement.id = 'service-' + i;
-                    
-                    const iconDiv = document.createElement('div');
-                    iconDiv.className = 'service-icon';
-                    const iconElement = document.createElement('i');
-                    iconElement.className = 'fas ' + service.icon;
-                    iconDiv.appendChild(iconElement);
-                    
-                    const titleElement = document.createElement('h3');
-                    titleElement.textContent = service.name;
-                    
-                    const descElement = document.createElement('p');
-                    descElement.textContent = service.description;
-                    
-                    const actionsDiv = document.createElement('div');
-                    actionsDiv.className = 'service-actions';
-                    
-                    const detailsBtn = document.createElement('button');
-                    detailsBtn.className = 'btn secondary details-btn';
-                    detailsBtn.textContent = 'Detalles';
-                    
-                    actionsDiv.appendChild(detailsBtn);
-                    
-                    serviceElement.appendChild(iconDiv);
-                    serviceElement.appendChild(titleElement);
-                    serviceElement.appendChild(descElement);
-                    serviceElement.appendChild(actionsDiv);
-                    
-                    servicesGrid.appendChild(serviceElement);
-                    
-                    detailsBtn.addEventListener('click', function() {
-                        alert(service.name + '\n\nCategoría: ' + service.category + '\n\n' + service.description);
-                    });
-                }
-            }
-            
-            displayServices(services);
-            
+            services.forEach(service => {
+                servicesGrid.innerHTML += `
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas ${service.icon}"></i>
+                        </div>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <div class="service-actions">
+                            <button class="btn secondary details-btn">Detalles</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Add event listeners for service buttons
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const service = this.closest('.service-item');
+                    const name = service.querySelector('h3').textContent;
+                    const desc = service.querySelector('p').textContent;
+                    alert(`${name}\n\n${desc}`);
+                });
+            });
+
+            // Render testimonials
             const testimonialsContainer = document.getElementById('testimonials-container');
             const showMoreBtn = document.getElementById('show-more-btn');
-            let displayedTestimonials = 0;
+            let displayedCount = 0;
             
-            function displayTestimonials(start, count) {
-                for(let i = start; i < start + count && i < testimonials.length; i++) {
-                    const testimonial = testimonials[i];
-                    
-                    const testimonialElement = document.createElement('div');
-                    testimonialElement.className = 'testimonial-card';
-                    
-                    const contentDiv = document.createElement('div');
-                    contentDiv.className = 'testimonial-content';
-                    
-                    const textP = document.createElement('p');
-                    textP.className = 'testimonial-text';
-                    textP.textContent = '"' + testimonial.comment + '"';
-                    
-                    const ratingDiv = document.createElement('div');
-                    ratingDiv.className = 'testimonial-rating';
-                    
-                    for(let s = 0; s < 5; s++) {
-                        const star = document.createElement('i');
-                        star.className = s < testimonial.rating ? 'fas fa-star' : 'far fa-star';
-                        ratingDiv.appendChild(star);
-                    }
-                    
-                    const nameH4 = document.createElement('h4');
-                    nameH4.className = 'testimonial-name';
-                    nameH4.textContent = testimonial.name;
-                    
-                    contentDiv.appendChild(textP);
-                    contentDiv.appendChild(ratingDiv);
-                    contentDiv.appendChild(nameH4);
-                    testimonialElement.appendChild(contentDiv);
-                    testimonialsContainer.appendChild(testimonialElement);
-                    
-                    displayedTestimonials++;
-                }
-                
-                showMoreBtn.style.display = displayedTestimonials >= testimonials.length ? 'none' : 'inline-block';
+            function showTestimonials(count = 3) {
+                const toShow = testimonials.slice(displayedCount, displayedCount + count);
+                toShow.forEach(testimonial => {
+                    testimonialsContainer.innerHTML += `
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"${testimonial.comment}"</p>
+                                <div class="testimonial-rating">
+                                    ${'<i class="fas fa-star"></i>'.repeat(testimonial.rating)}
+                                    ${'<i class="far fa-star"></i>'.repeat(5 - testimonial.rating)}
+                                </div>
+                                <h4 class="testimonial-name">${testimonial.name}</h4>
+                            </div>
+                        </div>
+                    `;
+                });
+                displayedCount += toShow.length;
+                showMoreBtn.style.display = displayedCount >= testimonials.length ? 'none' : 'block';
             }
-            
-            displayTestimonials(0, 3);
-            
-            showMoreBtn.addEventListener('click', function() {
-                displayTestimonials(displayedTestimonials, 3);
-            });
+
+            showTestimonials();
+            showMoreBtn.addEventListener('click', () => showTestimonials());
         });
     </script>
 </body>

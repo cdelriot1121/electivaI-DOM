@@ -32,13 +32,7 @@
             <p class="subtitle">Professionals committed to innovation and sustainability</p>
         </section>
     
-       
-    
-        <section class="team-container" id="team-container">
-            <!-- Team members will be dynamically loaded here -->
-        </section>
-    
-      
+        <section class="team-container" id="team-container"></section>
     </main>
     
     <footer>
@@ -68,7 +62,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', () => {
             const teamMembers = [
                 {
                     name: "Valeria Hernandez",
@@ -76,8 +70,7 @@
                     description: "Specialist in frontend development and creating interactive interfaces. Expert in implementing dynamic visual solutions to optimize user experience.",
                     image: "https://avatars.githubusercontent.com/u/178744062?v=4",
                     email: "valeria@services.com",
-                    github: "https://github.com/valeriahh33",
-                    category: "frontend"
+                    github: "https://github.com/valeriahh33"
                 },
                 {
                     name: "Willys Hurtado",
@@ -85,8 +78,7 @@
                     description: "Full-stack developer with extensive knowledge in frontend and backend technologies. Leads research and implementation of new technological solutions for public service management.",
                     image: "https://avatars.githubusercontent.com/u/167822997?v=4",
                     email: "willys@services.com",
-                    github: "https://github.com/Sirwillys06",
-                    category: "fullstack"
+                    github: "https://github.com/Sirwillys06"
                 },
                 {
                     name: "Giovanny Orozco",
@@ -94,8 +86,7 @@
                     description: "Specialist in creating visual representations of complex data. Developed interactive visualization systems to facilitate understanding of public service consumption patterns.",
                     image: "https://avatars.githubusercontent.com/u/167822703?v=4",
                     email: "giovanny@services.com",
-                    github: "https://github.com/Gaos-Orozco",
-                    category: "frontend"
+                    github: "https://github.com/Gaos-Orozco"
                 },
                 {
                     name: "Carlos Del Rio",
@@ -103,134 +94,95 @@
                     description: "Expert in backend development and DevOps infrastructure management. Responsible for system architecture and implementing continuous integration and deployment processes.",
                     image: "https://avatars.githubusercontent.com/u/137203832?v=4",
                     email: "carlos@services.com",
-                    github: "https://github.com/cdelriot1121",
-                    category: "backend"
+                    github: "https://github.com/cdelriot1121"
                 }
             ];
-    
-            // Selección del contenedor de equipo
+
             const teamContainer = document.getElementById('team-container');
             
-            // Función para mostrar miembros del equipo usando métodos básicos del DOM
-            function displayTeamMembers(members) {
-                // Limpiar el contenedor
-                teamContainer.innerHTML = '';
+            teamMembers.forEach(member => {
+                const memberDiv = document.createElement('div');
+                memberDiv.setAttribute('class', 'team-member');
                 
-                // Iterar a través de los miembros con un bucle for tradicional
-                for (let i = 0; i < members.length; i++) {
-                    const member = members[i];
-                    
-                    // Crear elemento contenedor del miembro
-                    const memberDiv = document.createElement('div');
-                    memberDiv.setAttribute('class', 'team-member');
-                    
-                    // Crear la tarjeta
-                    const memberCard = document.createElement('div');
-                    memberCard.setAttribute('class', 'member-card');
-                    
-                    // Crear la parte frontal de la tarjeta
-                    const frontDiv = document.createElement('div');
-                    frontDiv.setAttribute('class', 'member-front');
-                    
-                    // Crear contenedor de imagen
-                    const imageDiv = document.createElement('div');
-                    imageDiv.setAttribute('class', 'member-image');
-                    
-                    // Crear elemento de imagen
-                    const img = document.createElement('img');
-                    img.setAttribute('src', member.image);
-                    img.setAttribute('alt', member.name);
-                    imageDiv.appendChild(img);
-                    
-                    // Crear elementos para nombre y rol
-                    const nameH3 = document.createElement('h3');
-                    nameH3.textContent = member.name;
-                    
-                    const roleP = document.createElement('p');
-                    roleP.setAttribute('class', 'member-role');
-                    roleP.textContent = member.role;
-                    
-                    // Añadir elementos al frente de la tarjeta
-                    frontDiv.appendChild(imageDiv);
-                    frontDiv.appendChild(nameH3);
-                    frontDiv.appendChild(roleP);
-                    
-                    // Crear la parte trasera de la tarjeta
-                    const backDiv = document.createElement('div');
-                    backDiv.setAttribute('class', 'member-back');
-                    
-                    // Crear elementos para la parte trasera
-                    const backNameH3 = document.createElement('h3');
-                    backNameH3.textContent = member.name;
-                    
-                    const backRoleP = document.createElement('p');
-                    backRoleP.setAttribute('class', 'member-role');
-                    backRoleP.textContent = member.role;
-                    
-                    const descP = document.createElement('p');
-                    descP.setAttribute('class', 'member-description');
-                    descP.textContent = member.description;
-                    
-                    const contactDiv = document.createElement('div');
-                    contactDiv.setAttribute('class', 'member-contact');
-                    
-                    // Crear enlaces de contacto
-                    const emailLink = document.createElement('a');
-                    emailLink.setAttribute('href', 'mailto:' + member.email);
-                    emailLink.setAttribute('class', 'email-link');
-                    
-                    const emailIcon = document.createElement('i');
-                    emailIcon.setAttribute('class', 'fas fa-envelope');
-                    emailLink.appendChild(emailIcon);
-                    
-                    const githubLink = document.createElement('a');
-                    githubLink.setAttribute('href', member.github);
-                    githubLink.setAttribute('target', '_blank');
-                    githubLink.setAttribute('class', 'github-link');
-                    
-                    const githubIcon = document.createElement('i');
-                    githubIcon.setAttribute('class', 'fab fa-github');
-                    githubLink.appendChild(githubIcon);
-                    
-                    // Añadir enlaces a la sección de contacto
-                    contactDiv.appendChild(emailLink);
-                    contactDiv.appendChild(githubLink);
-                    
-                    // Añadir elementos a la parte trasera
-                    backDiv.appendChild(backNameH3);
-                    backDiv.appendChild(backRoleP);
-                    backDiv.appendChild(descP);
-                    backDiv.appendChild(contactDiv);
-                    
-                    // Añadir partes frontal y trasera a la tarjeta
-                    memberCard.appendChild(frontDiv);
-                    memberCard.appendChild(backDiv);
-                    
-                    // Añadir la tarjeta al contenedor del miembro
-                    memberDiv.appendChild(memberCard);
-                    
-                    // Añadir el miembro al contenedor principal
-                    teamContainer.appendChild(memberDiv);
-                    
-                    // Añadir eventos de interacción
-                    memberCard.addEventListener('mouseenter', function() {
-                        this.setAttribute('class', 'member-card flipped');
-                    });
-                    
-                    memberCard.addEventListener('mouseleave', function() {
-                        this.setAttribute('class', 'member-card');
-                    });
-                    
-                    memberCard.addEventListener('click', function() {
-                        alert(member.name + '\nRole: ' + member.role + '\nContact: ' + member.email);
-                    });
-                }
-            }
-            
-            // Mostrar todos los miembros inicialmente
-            displayTeamMembers(teamMembers);
-         });
-            
-</script>
+                const memberCard = document.createElement('div');
+                memberCard.setAttribute('class', 'member-card');
+                
+                const frontDiv = document.createElement('div');
+                frontDiv.setAttribute('class', 'member-front');
+                
+                const imageDiv = document.createElement('div');
+                imageDiv.setAttribute('class', 'member-image');
+                
+                const img = document.createElement('img');
+                img.setAttribute('src', member.image);
+                img.setAttribute('alt', member.name);
+                imageDiv.appendChild(img);
+                
+                const nameH3 = document.createElement('h3');
+                nameH3.textContent = member.name;
+                
+                const roleP = document.createElement('p');
+                roleP.setAttribute('class', 'member-role');
+                roleP.textContent = member.role;
+                
+                frontDiv.appendChild(imageDiv);
+                frontDiv.appendChild(nameH3);
+                frontDiv.appendChild(roleP);
+                
+                const backDiv = document.createElement('div');
+                backDiv.setAttribute('class', 'member-back');
+                
+                const backNameH3 = document.createElement('h3');
+                backNameH3.textContent = member.name;
+                
+                const backRoleP = document.createElement('p');
+                backRoleP.setAttribute('class', 'member-role');
+                backRoleP.textContent = member.role;
+                
+                const descP = document.createElement('p');
+                descP.setAttribute('class', 'member-description');
+                descP.textContent = member.description;
+                
+                const contactDiv = document.createElement('div');
+                contactDiv.setAttribute('class', 'member-contact');
+                
+                const emailLink = document.createElement('a');
+                emailLink.setAttribute('href', 'mailto:' + member.email);
+                emailLink.setAttribute('class', 'email-link');
+                emailLink.innerHTML = '<i class="fas fa-envelope"></i>';
+                
+                const githubLink = document.createElement('a');
+                githubLink.setAttribute('href', member.github);
+                githubLink.setAttribute('target', '_blank');
+                githubLink.setAttribute('class', 'github-link');
+                githubLink.innerHTML = '<i class="fab fa-github"></i>';
+                
+                contactDiv.appendChild(emailLink);
+                contactDiv.appendChild(githubLink);
+                
+                backDiv.appendChild(backNameH3);
+                backDiv.appendChild(backRoleP);
+                backDiv.appendChild(descP);
+                backDiv.appendChild(contactDiv);
+                
+                memberCard.appendChild(frontDiv);
+                memberCard.appendChild(backDiv);
+                memberDiv.appendChild(memberCard);
+                teamContainer.appendChild(memberDiv);
+                
+                memberCard.addEventListener('mouseenter', function() {
+                    this.setAttribute('class', 'member-card flipped');
+                });
+                
+                memberCard.addEventListener('mouseleave', function() {
+                    this.setAttribute('class', 'member-card');
+                });
+                
+                memberCard.addEventListener('click', function() {
+                    alert(member.name + '\nRole: ' + member.role + '\nContact: ' + member.email);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
