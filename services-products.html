@@ -33,10 +33,6 @@
         </section>
 
         <div class="services-controls">
-            <div class="search-container">
-                <input type="text" id="service-search" placeholder="Search service...">
-                <button id="search-btn" class="btn primary">Search</button>
-            </div>
             <div class="category-filter">
                 <button class="filter-btn active" data-category="all">All</button>
                 <button class="filter-btn" data-category="water">Water</button>
@@ -48,39 +44,6 @@
         <section class="services-container">
             <h2>Our Solutions</h2>
             <div class="services-grid" id="services-grid">
-           
-            </div>
-
-            <div class="new-service-form">
-                <h3>Add New Service</h3>
-                <form id="add-service-form">
-                    <div class="form-group">
-                        <label for="service-name">Service Name:</label>
-                        <input type="text" id="service-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-description">Description:</label>
-                        <textarea id="service-description" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-category">Category:</label>
-                        <select id="service-category">
-                            <option value="water">Water</option>
-                            <option value="energy">Energy</option>
-                            <option value="gas">Gas</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-icon">Icon:</label>
-                        <select id="service-icon">
-                            <option value="fa-tint">Water Drop</option>
-                            <option value="fa-bolt">Lightning</option>
-                            <option value="fa-fire">Fire</option>
-
-                        </select>
-                    </div>
-                    <button type="submit" class="btn primary">Add Service</button>
-                </form>
             </div>
         </section>
 
@@ -89,38 +52,10 @@
             <p>Discover the experiences of those who have already implemented our solutions</p>
             
             <div id="testimonials-container" class="testimonials-container">
-              
             </div>
             
             <div class="testimonials-controls">
                 <button id="show-more-btn" class="btn primary">Show More Testimonials</button>
-                <button id="add-testimonial-btn" class="btn secondary">Add My Testimonial</button>
-            </div>
-
-            <div id="testimonial-form-container" class="testimonial-form-container" style="display: none;">
-                <h3>Add Your Testimonial</h3>
-                <form id="add-testimonial-form">
-                    <div class="form-group">
-                        <label for="testimonial-name">Your Name:</label>
-                        <input type="text" id="testimonial-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="testimonial-comment">Comment:</label>
-                        <textarea id="testimonial-comment" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="testimonial-rating">Rating:</label>
-                        <div class="rating-selector" id="rating-selector">
-                            <i class="far fa-star" data-rating="1"></i>
-                            <i class="far fa-star" data-rating="2"></i>
-                            <i class="far fa-star" data-rating="3"></i>
-                            <i class="far fa-star" data-rating="4"></i>
-                            <i class="far fa-star" data-rating="5"></i>
-                        </div>
-                        <input type="hidden" id="testimonial-rating" value="0">
-                    </div>
-                    <button type="submit" class="btn primary">Submit Testimonial</button>
-                </form>
             </div>
         </section>
     </main>
@@ -153,429 +88,127 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-         
-            const services = [
-    {
-        name: "EcoAgua",
-        description: "Real-time water consumption monitoring system with personalized alerts and recommendations for reducing usage.",
-        icon: "fa-tint",
-        category: "water"
-    },
-    {
-        name: "EnergíaSmart",
-        description: "Smart energy management platform that optimizes electricity consumption in homes and commercial buildings.",
-        icon: "fa-bolt",
-        category: "energy"
-    },
-    {
-        name: "GasOptimizer",
-        description: "Solution focused on reducing gas usage through real-time monitoring, leak detection, and efficiency tips for households.",
-        icon: "fa-fire",
-        category: "gas"
-    }
-];
-
-             const testimonials = [
-            {
-                name: "María González",
-                comment: "Thanks to EcoAgua, we reduced our water consumption by 30% in just 3 months. The real-time alerts are very helpful.",
-                rating: 5
-            },
-            {
-                name: "Juan Pérez",
-                comment: "EnergíaSmart has allowed us to significantly save on our electricity bill. The system is very intuitive and easy to use.",
-                rating: 5
-            },
-            {
-                name: "Laura Sánchez",
-                comment: "The EcoEduca workshops have transformed how our community manages public services. Highly recommended.",
-                rating: 4
-            },
-            {
-                name: "Roberto Díaz",
-                comment: "ReciclaYA has made recycling more fun for the whole family. The kids are very motivated by the rewards system.",
-                rating: 5
-            },
-            {
-                name: "Patricia Ramos",
-                comment: "The technical support from EcoServicios is exceptional. They’re always available to answer any questions.",
-                rating: 4
-            },
-            {
-                name: "Daniel Torres",
-                comment: "The personalized recommendations from EnergíaSmart are spot-on and easy to implement.",
-                rating: 4
-            }
-        ];
-
-
-        
-            const servicesGrid = document.getElementById('services-grid');
             
-          
+            const services = [
+                {
+                    name: "EcoAgua",
+                    description: "Real-time water consumption monitoring system with personalized alerts and recommendations for reducing usage.",
+                    icon: "fa-tint",
+                    category: "water"
+                },
+                {
+                    name: "EnergíaSmart",
+                    description: "Smart energy management platform that optimizes electricity consumption in homes and commercial buildings.",
+                    icon: "fa-bolt",
+                    category: "energy"
+                },
+                {
+                    name: "GasOptimizer",
+                    description: "Solution focused on reducing gas usage through real-time monitoring, leak detection, and efficiency tips for households.",
+                    icon: "fa-fire",
+                    category: "gas"
+                }
+            ];
+
+           
+            const testimonials = [
+                {
+                    name: "María González",
+                    comment: "Thanks to EcoAgua, we reduced our water consumption by 30% in just 3 months.",
+                    rating: 5
+                },
+                {
+                    name: "Juan Pérez",
+                    comment: "EnergíaSmart has allowed us to significantly save on our electricity bill.",
+                    rating: 5
+                },
+                {
+                    name: "Guillermo",
+                    comment: "EnergíaSmart has allowed us to significantly save on our electricity bill.",
+                    rating: 5
+                },
+                {
+                    name: "Gonzales",
+                    comment: "EnergíaSmart has allowed us to significantly save on our electricity bill.",
+                    rating: 5
+                },
+                {
+                    name: "Laura Sánchez",
+                    comment: "The EcoEduca workshops have transformed how our community manages public services.",
+                    rating: 4
+                }
+            ];
+
+            
             function displayServices(servicesList) {
-          
+                const servicesGrid = document.getElementById('services-grid');
                 servicesGrid.innerHTML = '';
                 
-               
-                for (let i = 0; i < servicesList.length; i++) {
-                    const service = servicesList[i];
-                    
-                   
+                servicesList.forEach(service => {
                     const serviceElement = document.createElement('div');
-                    serviceElement.setAttribute('class', 'service-item');
-                    serviceElement.setAttribute('data-category', service.category);
-                    serviceElement.setAttribute('id', 'service-' + i);
-                    
-                
-                    const iconDiv = document.createElement('div');
-                    iconDiv.setAttribute('class', 'service-icon');
-                    
-                    const iconElement = document.createElement('i');
-                    iconElement.setAttribute('class', 'fas ' + service.icon);
-                    iconDiv.appendChild(iconElement);
-                    
-                 
-                    const titleElement = document.createElement('h3');
-                    titleElement.textContent = service.name;
-                    
-               
-                    const descElement = document.createElement('p');
-                    descElement.textContent = service.description;
-                    
-                  
-                    const actionsDiv = document.createElement('div');
-                    actionsDiv.setAttribute('class', 'service-actions');
-                    
-             
-                    const detailsBtn = document.createElement('button');
-                    detailsBtn.setAttribute('class', 'btn secondary details-btn');
-                    detailsBtn.textContent = 'Detalles';
-                    
-              
-                    const removeBtn = document.createElement('button');
-                    removeBtn.setAttribute('class', 'btn remove-btn');
-                    removeBtn.textContent = 'Eliminar';
-                    
-                 
-                    actionsDiv.appendChild(detailsBtn);
-                    actionsDiv.appendChild(removeBtn);
-                    
-               
-                    serviceElement.appendChild(iconDiv);
-                    serviceElement.appendChild(titleElement);
-                    serviceElement.appendChild(descElement);
-                    serviceElement.appendChild(actionsDiv);
-                    
-               
+                    serviceElement.className = 'service-item';
+                    serviceElement.innerHTML = `
+                        <div class="service-icon">
+                            <i class="fas ${service.icon}"></i>
+                        </div>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <div class="service-actions">
+                            <button class="btn secondary details-btn">Ver Detalles</button>
+                        </div>
+                    `;
+
+                    serviceElement.querySelector('.details-btn').addEventListener('click', () => {
+                        alert(`${service.name}\n\nCategoría: ${service.category}\n\n${service.description}`);
+                    });
+
                     servicesGrid.appendChild(serviceElement);
-                    
-                  
-                    detailsBtn.addEventListener('click', function() {
-                        alert(service.name + '\n\nCategoría: ' + service.category + '\n\n' + service.description);
-                    });
-                    
-                
-                    removeBtn.addEventListener('click', function() {
-                     
-                        if (confirm('¿Estás seguro de que deseas eliminar el servicio "' + service.name + '"?')) {
-                       
-                            servicesGrid.removeChild(serviceElement);
-                            
-                          
-                            services.splice(i, 1);
-                            
-                        
-                            alert('El servicio "' + service.name + '" ha sido eliminado.');
-                        }
-                    });
-                }
+                });
             }
+
             
-         
+            function displayTestimonials(start = 0, count = 3) {
+                const container = document.getElementById('testimonials-container');
+                const showMoreBtn = document.getElementById('show-more-btn');
+                
+                testimonials.slice(start, start + count).forEach(testimonial => {
+                    const testimonialElement = document.createElement('div');
+                    testimonialElement.className = 'testimonial-card';
+                    testimonialElement.innerHTML = `
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"${testimonial.comment}"</p>
+                            <div class="testimonial-rating">
+                                ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5-testimonial.rating)}
+                            </div>
+                            <h4 class="testimonial-name">${testimonial.name}</h4>
+                        </div>
+                    `;
+                    container.appendChild(testimonialElement);
+                });
+                
+                showMoreBtn.style.display = start + count >= testimonials.length ? 'none' : 'block';
+            }
+
+           
             displayServices(services);
-            
-       
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
+            displayTestimonials();
+
+            document.querySelectorAll('.filter-btn').forEach(button => {
                 button.addEventListener('click', function() {
-                   
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-               
+                    const category = this.getAttribute('data-category');
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const selectedCategory = this.getAttribute('data-category');
-                    
-                    if (selectedCategory === 'todos') {
-                        displayServices(services);
-                    } else {
-                   
-                        const filteredServices = services.filter(service => 
-                            service.category === selectedCategory
-                        );
-                        displayServices(filteredServices);
-                    }
+                    const filtered = category === 'all' ? 
+                        services : 
+                        services.filter(service => service.category === category);
+                    displayServices(filtered);
                 });
-            });
-            
-        
-            const searchBtn = document.getElementById('search-btn');
-            const searchInput = document.getElementById('service-search');
-            
-            searchBtn.addEventListener('click', function() {
-                const searchText = searchInput.value.toLowerCase();
-                
-                if (searchText.trim() === '') {
-                    displayServices(services);
-                    return;
-                }
-                
-       
-                const searchResults = services.filter(service => 
-                    service.name.toLowerCase().includes(searchText) || 
-                    service.description.toLowerCase().includes(searchText)
-                );
-                
-                displayServices(searchResults);
-            });
-            
-     
-            const addServiceForm = document.getElementById('add-service-form');
-            
-            addServiceForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-             
-                const name = document.getElementById('service-name').value;
-                const description = document.getElementById('service-description').value;
-                const category = document.getElementById('service-category').value;
-                const icon = document.getElementById('service-icon').value;
-                
-              
-                const newService = {
-                    name,
-                    description,
-                    icon,
-                    category
-                };
-                
-          
-                services.push(newService);
-                
-             
-                displayServices(services);
-             
-                addServiceForm.reset();
-                
-             
-                alert(`El servicio "${name}" ha sido añadido correctamente.`);
             });
 
-          
-            const testimonialsContainer = document.getElementById('testimonials-container');
-            const showMoreBtn = document.getElementById('show-more-btn');
-            
-            let displayedTestimonials = 0;
-            
-            function displayTestimonials(start, count) {
-                for(let i = start; i < start + count && i < testimonials.length; i++) {
-                    const testimonial = testimonials[i];
-                    
-                   
-                    const testimonialElement = document.createElement('div');
-                    testimonialElement.setAttribute('class', 'testimonial-card');
-                    testimonialElement.setAttribute('data-id', i);
-                    
-                
-                    const contentDiv = document.createElement('div');
-                    contentDiv.setAttribute('class', 'testimonial-content');
-                    
-              
-                    const textP = document.createElement('p');
-                    textP.setAttribute('class', 'testimonial-text');
-                    textP.textContent = '"' + testimonial.comment + '"';
-                    
-                 
-                    const ratingDiv = document.createElement('div');
-                    ratingDiv.setAttribute('class', 'testimonial-rating');
-                    
-                 
-                    for(let s = 0; s < 5; s++) {
-                        const star = document.createElement('i');
-                        if(s < testimonial.rating) {
-                            star.setAttribute('class', 'fas fa-star');
-                        } else {
-                            star.setAttribute('class', 'far fa-star');
-                        }
-                        ratingDiv.appendChild(star);
-                    }
-                    
-              
-                    const nameH4 = document.createElement('h4');
-                    nameH4.setAttribute('class', 'testimonial-name');
-                    nameH4.textContent = testimonial.name;
-                    
-             
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.setAttribute('class', 'delete-testimonial-btn');
-                    deleteBtn.setAttribute('title', 'Eliminar testimonio');
-                    
-                    const trashIcon = document.createElement('i');
-                    trashIcon.setAttribute('class', 'fas fa-trash');
-                    deleteBtn.appendChild(trashIcon);
-                    
-            
-                    contentDiv.appendChild(textP);
-                    contentDiv.appendChild(ratingDiv);
-                    contentDiv.appendChild(nameH4);
-                    contentDiv.appendChild(deleteBtn);
-                    
-          
-                    testimonialElement.appendChild(contentDiv);
-                    
-              
-                    testimonialsContainer.appendChild(testimonialElement);
-                    
-              
-                    deleteBtn.addEventListener('click', function() {
-                        if (confirm('¿Estás seguro de que deseas eliminar este testimonio?')) {
-                   
-                            const id = parseInt(testimonialElement.getAttribute('data-id'));
-                            
-                          
-                            testimonialsContainer.removeChild(testimonialElement);
-                            
-                   
-                            testimonials.splice(id, 1);
-                            
-                     
-                            displayedTestimonials--;
-                            
-                       
-                            testimonialsContainer.innerHTML = '';
-                            displayedTestimonials = 0;
-                            displayTestimonials(0, displayedTestimonials + 3);
-                        }
-                    });
-                    
-                    displayedTestimonials++;
-                }
-                
-         
-                if(displayedTestimonials >= testimonials.length) {
-                    showMoreBtn.style.display = 'none';
-                } else {
-                    showMoreBtn.style.display = 'inline-block';
-                }
-            }
-            
-      
-            displayTestimonials(0, 3);
-            
-          
-            showMoreBtn.addEventListener('click', function() {
-                displayTestimonials(displayedTestimonials, 3);
-            });
-
-      
-            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
-            const testimonialForm = document.getElementById('testimonial-form-container');
-            
-            addTestimonialBtn.addEventListener('click', function() {
-           
-                if (testimonialForm.style.display === 'none' || testimonialForm.style.display === '') {
-                    testimonialForm.style.display = 'block';
-                    this.textContent = 'Cancelar';
-                } else {
-                    testimonialForm.style.display = 'none';
-                    this.textContent = 'Añadir mi testimonio';
-                }
-            });
-
-
-            const ratingStars = document.querySelectorAll('#rating-selector i');
-            const ratingInput = document.getElementById('testimonial-rating');
-            
-            ratingStars.forEach(star => {
-                star.addEventListener('click', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    
-               
-                    ratingInput.value = rating;
-                    
-              
-                    ratingStars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.className = 'fas fa-star';
-                        } else {
-                            s.className = 'far fa-star';
-                        }
-                    });
-                });
-                
-      
-                star.addEventListener('mouseenter', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    
-                    ratingStars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.style.color = '#f1c40f';
-                        }
-                    });
-                });
-                
-                star.addEventListener('mouseleave', function() {
-                    ratingStars.forEach(s => {
-                        s.style.color = '';
-                    });
-                });
-            });
-  
-            const addTestimonialForm = document.getElementById('add-testimonial-form');
-            
-            addTestimonialForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-     
-                const name = document.getElementById('testimonial-name').value;
-                const comment = document.getElementById('testimonial-comment').value;
-                const rating = parseInt(document.getElementById('testimonial-rating').value);
-                
-      
-                if (!name || !comment || rating < 1) {
-                    alert('Por favor, completa todos los campos y selecciona una calificación.');
-                    return;
-                }
-                
-       
-                const newTestimonial = {
-                    name,
-                    comment,
-                    rating
-                };
-                
-        
-                testimonials.push(newTestimonial);
-                
-       
-                testimonialForm.style.display = 'none';
-                addTestimonialBtn.textContent = 'Añadir mi testimonio';
-                
-       
-                addTestimonialForm.reset();
-                ratingStars.forEach(s => {
-                    s.className = 'far fa-star';
-                });
-                
-              
-                testimonialsContainer.innerHTML = '';
-                displayedTestimonials = 0;
-                displayTestimonials(0, testimonials.length < 3 ? testimonials.length : 3);
-                
-          
-                alert('¡Gracias por compartir tu experiencia! Tu testimonio ha sido añadido.');
+            document.getElementById('show-more-btn').addEventListener('click', function() {
+                const currentCount = document.querySelectorAll('.testimonial-card').length;
+                displayTestimonials(currentCount, 3);
             });
         });
     </script>
