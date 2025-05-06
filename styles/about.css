@@ -1,4 +1,4 @@
-/* Estilos específicos para la página About Us */
+
 
 .about-hero {
     background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://st.depositphotos.com/1038076/4908/i/450/depositphotos_49080337-stock-photo-about-us.jpg');
@@ -90,7 +90,7 @@
     margin-bottom: 1rem;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .mission-vision {
         grid-template-columns: 1fr;

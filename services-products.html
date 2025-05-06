@@ -48,7 +48,7 @@
         <section class="services-container">
             <h2>Our Solutions</h2>
             <div class="services-grid" id="services-grid">
-                <!-- Services will be dynamically loaded from JavaScript -->
+           
             </div>
 
             <div class="new-service-form">
@@ -89,7 +89,7 @@
             <p>Discover the experiences of those who have already implemented our solutions</p>
             
             <div id="testimonials-container" class="testimonials-container">
-                <!-- Testimonials will be dynamically loaded here -->
+              
             </div>
             
             <div class="testimonials-controls">
@@ -153,7 +153,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Datos de servicios
+         
             const services = [
     {
         name: "EcoAgua",
@@ -209,25 +209,25 @@
         ];
 
 
-            // Seleccionamos el contenedor de servicios
+        
             const servicesGrid = document.getElementById('services-grid');
             
-            // Reemplaza la función displayServices por esta versión:
+          
             function displayServices(servicesList) {
-                // Limpiamos el contenedor
+          
                 servicesGrid.innerHTML = '';
                 
-                // Generamos los elementos de servicio uno por uno
+               
                 for (let i = 0; i < servicesList.length; i++) {
                     const service = servicesList[i];
                     
-                    // Creamos el elemento del servicio
+                   
                     const serviceElement = document.createElement('div');
                     serviceElement.setAttribute('class', 'service-item');
                     serviceElement.setAttribute('data-category', service.category);
                     serviceElement.setAttribute('id', 'service-' + i);
                     
-                    // Crear el icono
+                
                     const iconDiv = document.createElement('div');
                     iconDiv.setAttribute('class', 'service-icon');
                     
@@ -235,75 +235,75 @@
                     iconElement.setAttribute('class', 'fas ' + service.icon);
                     iconDiv.appendChild(iconElement);
                     
-                    // Crear el título
+                 
                     const titleElement = document.createElement('h3');
                     titleElement.textContent = service.name;
                     
-                    // Crear la descripción
+               
                     const descElement = document.createElement('p');
                     descElement.textContent = service.description;
                     
-                    // Crear contenedor de acciones
+                  
                     const actionsDiv = document.createElement('div');
                     actionsDiv.setAttribute('class', 'service-actions');
                     
-                    // Botón de detalles
+             
                     const detailsBtn = document.createElement('button');
                     detailsBtn.setAttribute('class', 'btn secondary details-btn');
                     detailsBtn.textContent = 'Detalles';
                     
-                    // Botón eliminar
+              
                     const removeBtn = document.createElement('button');
                     removeBtn.setAttribute('class', 'btn remove-btn');
                     removeBtn.textContent = 'Eliminar';
                     
-                    // Añadir botones al contenedor
+                 
                     actionsDiv.appendChild(detailsBtn);
                     actionsDiv.appendChild(removeBtn);
                     
-                    // Añadir todos los elementos al servicio
+               
                     serviceElement.appendChild(iconDiv);
                     serviceElement.appendChild(titleElement);
                     serviceElement.appendChild(descElement);
                     serviceElement.appendChild(actionsDiv);
                     
-                    // Añadir al grid principal
+               
                     servicesGrid.appendChild(serviceElement);
                     
-                    // Añadir evento al botón de detalles
+                  
                     detailsBtn.addEventListener('click', function() {
                         alert(service.name + '\n\nCategoría: ' + service.category + '\n\n' + service.description);
                     });
                     
-                    // Añadir evento al botón de eliminar
+                
                     removeBtn.addEventListener('click', function() {
-                        // Confirmamos antes de eliminar
+                     
                         if (confirm('¿Estás seguro de que deseas eliminar el servicio "' + service.name + '"?')) {
-                            // Eliminamos el elemento
+                       
                             servicesGrid.removeChild(serviceElement);
                             
-                            // También lo eliminamos del array de servicios
+                          
                             services.splice(i, 1);
                             
-                            // Mostramos mensaje de confirmación
+                        
                             alert('El servicio "' + service.name + '" ha sido eliminado.');
                         }
                     });
                 }
             }
             
-            // Mostramos todos los servicios inicialmente
+         
             displayServices(services);
             
-            // Funcionamiento de los botones de filtro
+       
             const filterButtons = document.querySelectorAll('.filter-btn');
             
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Quitamos la clase active de todos los botones
+                   
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     
-                    // Añadimos la clase active al botón actual
+               
                     this.classList.add('active');
                     
                     const selectedCategory = this.getAttribute('data-category');
@@ -311,7 +311,7 @@
                     if (selectedCategory === 'todos') {
                         displayServices(services);
                     } else {
-                        // Filtramos los servicios
+                   
                         const filteredServices = services.filter(service => 
                             service.category === selectedCategory
                         );
@@ -320,7 +320,7 @@
                 });
             });
             
-            // Funcionamiento del buscador
+        
             const searchBtn = document.getElementById('search-btn');
             const searchInput = document.getElementById('service-search');
             
@@ -332,7 +332,7 @@
                     return;
                 }
                 
-                // Filtramos por texto en nombre o descripción
+       
                 const searchResults = services.filter(service => 
                     service.name.toLowerCase().includes(searchText) || 
                     service.description.toLowerCase().includes(searchText)
@@ -341,19 +341,19 @@
                 displayServices(searchResults);
             });
             
-            // Función para añadir un nuevo servicio
+     
             const addServiceForm = document.getElementById('add-service-form');
             
             addServiceForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Obtenemos los valores del formulario
+             
                 const name = document.getElementById('service-name').value;
                 const description = document.getElementById('service-description').value;
                 const category = document.getElementById('service-category').value;
                 const icon = document.getElementById('service-icon').value;
                 
-                // Creamos el nuevo servicio
+              
                 const newService = {
                     name,
                     description,
@@ -361,20 +361,19 @@
                     category
                 };
                 
-                // Añadimos al array de servicios
+          
                 services.push(newService);
                 
-                // Actualizamos la visualización
+             
                 displayServices(services);
-                
-                // Limpiamos el formulario
+             
                 addServiceForm.reset();
                 
-                // Mostramos un mensaje de confirmación
+             
                 alert(`El servicio "${name}" ha sido añadido correctamente.`);
             });
 
-            // Funciones para los testimonios
+          
             const testimonialsContainer = document.getElementById('testimonials-container');
             const showMoreBtn = document.getElementById('show-more-btn');
             
@@ -384,25 +383,25 @@
                 for(let i = start; i < start + count && i < testimonials.length; i++) {
                     const testimonial = testimonials[i];
                     
-                    // Crear el elemento de testimonio
+                   
                     const testimonialElement = document.createElement('div');
                     testimonialElement.setAttribute('class', 'testimonial-card');
                     testimonialElement.setAttribute('data-id', i);
                     
-                    // Crear contenedor del contenido
+                
                     const contentDiv = document.createElement('div');
                     contentDiv.setAttribute('class', 'testimonial-content');
                     
-                    // Crear texto del testimonio
+              
                     const textP = document.createElement('p');
                     textP.setAttribute('class', 'testimonial-text');
                     textP.textContent = '"' + testimonial.comment + '"';
                     
-                    // Crear calificación con estrellas
+                 
                     const ratingDiv = document.createElement('div');
                     ratingDiv.setAttribute('class', 'testimonial-rating');
                     
-                    // Añadir estrellas según puntuación
+                 
                     for(let s = 0; s < 5; s++) {
                         const star = document.createElement('i');
                         if(s < testimonial.rating) {
@@ -413,12 +412,12 @@
                         ratingDiv.appendChild(star);
                     }
                     
-                    // Crear nombre del testimonio
+              
                     const nameH4 = document.createElement('h4');
                     nameH4.setAttribute('class', 'testimonial-name');
                     nameH4.textContent = testimonial.name;
                     
-                    // Crear botón de eliminar
+             
                     const deleteBtn = document.createElement('button');
                     deleteBtn.setAttribute('class', 'delete-testimonial-btn');
                     deleteBtn.setAttribute('title', 'Eliminar testimonio');
@@ -427,34 +426,34 @@
                     trashIcon.setAttribute('class', 'fas fa-trash');
                     deleteBtn.appendChild(trashIcon);
                     
-                    // Añadir todos los elementos al contenido
+            
                     contentDiv.appendChild(textP);
                     contentDiv.appendChild(ratingDiv);
                     contentDiv.appendChild(nameH4);
                     contentDiv.appendChild(deleteBtn);
                     
-                    // Añadir contenido al elemento testimonio
+          
                     testimonialElement.appendChild(contentDiv);
                     
-                    // Añadir al contenedor principal
+              
                     testimonialsContainer.appendChild(testimonialElement);
                     
-                    // Añadir evento al botón eliminar
+              
                     deleteBtn.addEventListener('click', function() {
                         if (confirm('¿Estás seguro de que deseas eliminar este testimonio?')) {
-                            // Obtenemos el ID del testimonio
+                   
                             const id = parseInt(testimonialElement.getAttribute('data-id'));
                             
-                            // Eliminamos el elemento del DOM
+                          
                             testimonialsContainer.removeChild(testimonialElement);
                             
-                            // Eliminamos del array
+                   
                             testimonials.splice(id, 1);
                             
-                            // Actualizamos el contador
+                     
                             displayedTestimonials--;
                             
-                            // Actualizamos todos los testimonios para mantener los IDs correctos
+                       
                             testimonialsContainer.innerHTML = '';
                             displayedTestimonials = 0;
                             displayTestimonials(0, displayedTestimonials + 3);
@@ -464,7 +463,7 @@
                     displayedTestimonials++;
                 }
                 
-                // Mostrar u ocultar el botón "Mostrar más"
+         
                 if(displayedTestimonials >= testimonials.length) {
                     showMoreBtn.style.display = 'none';
                 } else {
@@ -472,20 +471,20 @@
                 }
             }
             
-            // Mostrar los primeros 3 testimonios inicialmente
+      
             displayTestimonials(0, 3);
             
-            // Evento para mostrar más testimonios
+          
             showMoreBtn.addEventListener('click', function() {
                 displayTestimonials(displayedTestimonials, 3);
             });
 
-            // Manejo del formulario de testimonios
+      
             const addTestimonialBtn = document.getElementById('add-testimonial-btn');
             const testimonialForm = document.getElementById('testimonial-form-container');
             
             addTestimonialBtn.addEventListener('click', function() {
-                // Alternamos la visibilidad del formulario
+           
                 if (testimonialForm.style.display === 'none' || testimonialForm.style.display === '') {
                     testimonialForm.style.display = 'block';
                     this.textContent = 'Cancelar';
@@ -495,7 +494,7 @@
                 }
             });
 
-            // Manejo de la selección de estrellas
+
             const ratingStars = document.querySelectorAll('#rating-selector i');
             const ratingInput = document.getElementById('testimonial-rating');
             
@@ -503,10 +502,10 @@
                 star.addEventListener('click', function() {
                     const rating = parseInt(this.getAttribute('data-rating'));
                     
-                    // Actualizamos el valor del input oculto
+               
                     ratingInput.value = rating;
                     
-                    // Actualizamos la visualización de las estrellas
+              
                     ratingStars.forEach((s, index) => {
                         if (index < rating) {
                             s.className = 'fas fa-star';
@@ -516,7 +515,7 @@
                     });
                 });
                 
-                // Añadimos efecto hover
+      
                 star.addEventListener('mouseenter', function() {
                     const rating = parseInt(this.getAttribute('data-rating'));
                     
@@ -533,50 +532,49 @@
                     });
                 });
             });
-            
-            // Manejo del envío del formulario de testimonio
+  
             const addTestimonialForm = document.getElementById('add-testimonial-form');
             
             addTestimonialForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Obtenemos los valores del formulario
+     
                 const name = document.getElementById('testimonial-name').value;
                 const comment = document.getElementById('testimonial-comment').value;
                 const rating = parseInt(document.getElementById('testimonial-rating').value);
                 
-                // Validaciones básicas
+      
                 if (!name || !comment || rating < 1) {
                     alert('Por favor, completa todos los campos y selecciona una calificación.');
                     return;
                 }
                 
-                // Creamos el nuevo testimonio
+       
                 const newTestimonial = {
                     name,
                     comment,
                     rating
                 };
                 
-                // Añadimos al array de testimonios
+        
                 testimonials.push(newTestimonial);
                 
-                // Actualizamos la visualización
+       
                 testimonialForm.style.display = 'none';
                 addTestimonialBtn.textContent = 'Añadir mi testimonio';
                 
-                // Limpiamos y ocultamos el formulario
+       
                 addTestimonialForm.reset();
                 ratingStars.forEach(s => {
                     s.className = 'far fa-star';
                 });
                 
-                // Mostramos el nuevo testimonio
+              
                 testimonialsContainer.innerHTML = '';
                 displayedTestimonials = 0;
                 displayTestimonials(0, testimonials.length < 3 ? testimonials.length : 3);
                 
-                // Mensaje de confirmación
+          
                 alert('¡Gracias por compartir tu experiencia! Tu testimonio ha sido añadido.');
             });
         });
