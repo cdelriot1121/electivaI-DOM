@@ -1,4 +1,4 @@
-/* Estilos específicos para la página de inicio */
+
 
 .hero {
     background: linear-gradient(rgba(236, 249, 242, 0.9), rgba(236, 249, 242, 0.9)), url('https://static.vecteezy.com/system/resources/previews/004/960/509/non_2x/public-services-innovations-word-concepts-banner-infrastructure-support-infographics-with-linear-icons-on-blue-background-isolated-creative-typography-outline-color-illustration-with-text-vector.jpg');
@@ -11,7 +11,7 @@
     margin-top: 2rem;
 }
 
-/* Sección de tarjetas */
+
 .cards-section {
     padding: 5rem 1rem;
     max-width: 1200px;

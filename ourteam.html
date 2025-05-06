@@ -45,7 +45,7 @@
         </div>
     
         <section class="team-container" id="team-container">
-            <!-- Team members will be dynamically loaded here -->
+         
         </section>
     
         <div class="team-info">
@@ -121,45 +121,43 @@
                 }
             ];
     
-            // Selección del contenedor de equipo
+         
             const teamContainer = document.getElementById('team-container');
             
-            // Función para mostrar miembros del equipo usando métodos básicos del DOM
+           
             function displayTeamMembers(members) {
-                // Limpiar el contenedor
+              
                 teamContainer.innerHTML = '';
                 
-                // Actualizar contador de miembros
+             
                 const memberCountElement = document.getElementById('member-count');
                 memberCountElement.textContent = members.length;
-                
-                // Iterar a través de los miembros con un bucle for tradicional
+            
                 for (let i = 0; i < members.length; i++) {
                     const member = members[i];
                     
-                    // Crear elemento contenedor del miembro
+             
                     const memberDiv = document.createElement('div');
                     memberDiv.setAttribute('class', 'team-member');
                     
-                    // Crear la tarjeta
+                  
                     const memberCard = document.createElement('div');
                     memberCard.setAttribute('class', 'member-card');
                     
-                    // Crear la parte frontal de la tarjeta
+               
                     const frontDiv = document.createElement('div');
                     frontDiv.setAttribute('class', 'member-front');
                     
-                    // Crear contenedor de imagen
+                   
                     const imageDiv = document.createElement('div');
                     imageDiv.setAttribute('class', 'member-image');
-                    
-                    // Crear elemento de imagen
+                 
                     const img = document.createElement('img');
                     img.setAttribute('src', member.image);
                     img.setAttribute('alt', member.name);
                     imageDiv.appendChild(img);
                     
-                    // Crear elementos para nombre y rol
+                    
                     const nameH3 = document.createElement('h3');
                     nameH3.textContent = member.name;
                     
@@ -167,16 +165,15 @@
                     roleP.setAttribute('class', 'member-role');
                     roleP.textContent = member.role;
                     
-                    // Añadir elementos al frente de la tarjeta
+                  
                     frontDiv.appendChild(imageDiv);
                     frontDiv.appendChild(nameH3);
                     frontDiv.appendChild(roleP);
                     
-                    // Crear la parte trasera de la tarjeta
+                 
                     const backDiv = document.createElement('div');
                     backDiv.setAttribute('class', 'member-back');
                     
-                    // Crear elementos para la parte trasera
                     const backNameH3 = document.createElement('h3');
                     backNameH3.textContent = member.name;
                     
@@ -191,7 +188,7 @@
                     const contactDiv = document.createElement('div');
                     contactDiv.setAttribute('class', 'member-contact');
                     
-                    // Crear enlaces de contacto
+                   
                     const emailLink = document.createElement('a');
                     emailLink.setAttribute('href', 'mailto:' + member.email);
                     emailLink.setAttribute('class', 'email-link');
@@ -209,27 +206,25 @@
                     githubIcon.setAttribute('class', 'fab fa-github');
                     githubLink.appendChild(githubIcon);
                     
-                    // Añadir enlaces a la sección de contacto
+                   
                     contactDiv.appendChild(emailLink);
                     contactDiv.appendChild(githubLink);
                     
-                    // Añadir elementos a la parte trasera
+                    
                     backDiv.appendChild(backNameH3);
                     backDiv.appendChild(backRoleP);
                     backDiv.appendChild(descP);
                     backDiv.appendChild(contactDiv);
                     
-                    // Añadir partes frontal y trasera a la tarjeta
                     memberCard.appendChild(frontDiv);
                     memberCard.appendChild(backDiv);
                     
-                    // Añadir la tarjeta al contenedor del miembro
+                
                     memberDiv.appendChild(memberCard);
                     
-                    // Añadir el miembro al contenedor principal
+             
                     teamContainer.appendChild(memberDiv);
-                    
-                    // Añadir eventos de interacción
+               
                     memberCard.addEventListener('mouseenter', function() {
                         this.setAttribute('class', 'member-card flipped');
                     });
@@ -244,20 +239,20 @@
                 }
             }
             
-            // Mostrar todos los miembros inicialmente
+          
             displayTeamMembers(teamMembers);
             
-            // Filtrado de miembros
+     
             const teamFilter = document.getElementById('team-filter');
             
             teamFilter.addEventListener('change', function() {
                 const selectedCategory = this.value;
                 
                 if (selectedCategory === 'all') {
-                    // Mostrar todos
+                  
                     displayTeamMembers(teamMembers);
                 } else {
-                    // Filtrar miembros con bucle for
+                 
                     const filteredMembers = [];
                     for (let i = 0; i < teamMembers.length; i++) {
                         if (teamMembers[i].category === selectedCategory) {
@@ -268,7 +263,7 @@
                 }
             });
             
-                // Actualizar estilo de todas las tarjetas
+               
                 const allCards = document.querySelectorAll('.member-card');
                 
                 for (let i = 0; i < allCards.length; i++) {
@@ -277,7 +272,6 @@
                     const backElement = card.querySelector('.member-back');
                     const textElements = card.querySelectorAll('h3, .member-role');
                     
-                    // Verificar nuevamente el estado actual
                     const bodyClassesAfterChange = body.getAttribute('class') || '';
                     const isDarkMode = bodyClassesAfterChange.indexOf('dark-mode') !== -1;
                     
@@ -299,11 +293,11 @@
                 }
             });
             
-            // Estadísticas del equipo
+           
             document.querySelector('.team-info').addEventListener('click', function() {
                 const statsElement = document.getElementById('team-stats');
                 
-                // Contar miembros por categoría usando bucles for
+                
                 let frontendCount = 0;
                 let backendCount = 0;
                 let fullstackCount = 0;
@@ -319,7 +313,7 @@
                     }
                 }
                 
-                // Actualizar estadísticas
+               
                 statsElement.innerHTML = 'Total members: <span id="member-count">' + teamMembers.length + '</span><br>' +
                                        'Frontend: ' + frontendCount + '<br>' +
                                        'Backend: ' + backendCount + '<br>' +
