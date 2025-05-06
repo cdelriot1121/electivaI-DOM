@@ -13,7 +13,7 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-leaf"></i>
-                <h2>ManageYourServices</h2>
+                <h2>Serviapp</h2>
             </div>
             <div class="menu">
                 <ul>
@@ -31,9 +31,8 @@
             <h1>Our Team</h1>
             <p class="subtitle">Professionals committed to innovation and sustainability</p>
         </section>
-
+    
         <div class="team-controls">
-            <button id="dark-mode-toggle" class="btn primary">Toggle Dark Mode</button>
             <div class="filter-container">
                 <label for="team-filter">Filter by role:</label>
                 <select id="team-filter">
@@ -44,11 +43,11 @@
                 </select>
             </div>
         </div>
-
+    
         <section class="team-container" id="team-container">
             <!-- Team members will be dynamically loaded here -->
         </section>
-
+    
         <div class="team-info">
             <h2>Team Statistics</h2>
             <p id="team-stats">Total members: <span id="member-count">0</span></p>
@@ -59,7 +58,7 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <i class="fas fa-leaf"></i>
-                <h2>ManageYourServices</h2>
+                <h2>Serviapp</h2>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
@@ -83,7 +82,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Array de miembros del equipo (mantener igual)
             const teamMembers = [
                 {
                     name: "Valeria Hernandez",
@@ -91,7 +89,7 @@
                     description: "Specialist in frontend development and creating interactive interfaces. Expert in implementing dynamic visual solutions to optimize user experience.",
                     image: "https://avatars.githubusercontent.com/u/178744062?v=4",
                     email: "valeria@services.com",
-                    github: "https://github.com/valeria",
+                    github: "https://github.com/valeriahh33",
                     category: "frontend"
                 },
                 {
@@ -100,7 +98,7 @@
                     description: "Full-stack developer with extensive knowledge in frontend and backend technologies. Leads research and implementation of new technological solutions for public service management.",
                     image: "https://avatars.githubusercontent.com/u/167822997?v=4",
                     email: "willys@services.com",
-                    github: "https://github.com/willys",
+                    github: "https://github.com/Sirwillys06",
                     category: "fullstack"
                 },
                 {
@@ -109,7 +107,7 @@
                     description: "Specialist in creating visual representations of complex data. Developed interactive visualization systems to facilitate understanding of public service consumption patterns.",
                     image: "https://avatars.githubusercontent.com/u/167822703?v=4",
                     email: "giovanny@services.com",
-                    github: "https://github.com/giovanny",
+                    github: "https://github.com/Gaos-Orozco",
                     category: "frontend"
                 },
                 {
@@ -118,7 +116,7 @@
                     description: "Expert in backend development and DevOps infrastructure management. Responsible for system architecture and implementing continuous integration and deployment processes.",
                     image: "https://avatars.githubusercontent.com/u/137203832?v=4",
                     email: "carlos@services.com",
-                    github: "https://github.com/carlos",
+                    github: "https://github.com/cdelriot1121",
                     category: "backend"
                 }
             ];
@@ -270,31 +268,6 @@
                 }
             });
             
-            // Cambio de modo oscuro
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            
-            darkModeToggle.addEventListener('click', function() {
-                const body = document.querySelector('body');
-                
-                // Verificar si ya tiene la clase dark-mode
-                let hasDarkMode = false;
-                const bodyClasses = body.getAttribute('class') || '';
-                
-                if (bodyClasses.indexOf('dark-mode') !== -1) {
-                    hasDarkMode = true;
-                }
-                
-                // Cambiar clase según estado
-                if (hasDarkMode) {
-                    body.setAttribute('class', bodyClasses.replace('dark-mode', '').trim());
-                    this.textContent = 'Switch to Dark Mode';
-                    this.setAttribute('class', 'btn primary');
-                } else {
-                    body.setAttribute('class', bodyClasses + ' dark-mode');
-                    this.textContent = 'Switch to Light Mode';
-                    this.setAttribute('class', 'btn secondary');
-                }
-                
                 // Actualizar estilo de todas las tarjetas
                 const allCards = document.querySelectorAll('.member-card');
                 
@@ -352,7 +325,6 @@
                                        'Backend: ' + backendCount + '<br>' +
                                        'Full Stack: ' + fullstackCount;
             });
-        });
     </script>
 </body>
 </html>

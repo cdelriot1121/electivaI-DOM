@@ -13,7 +13,7 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-leaf"></i>
-                <h2>ManageYourServices</h2>
+                <h2>Serviapp</h2>
             </div>
             <div class="menu">
                 <ul>
@@ -41,7 +41,7 @@
                 <button class="filter-btn active" data-category="all">All</button>
                 <button class="filter-btn" data-category="water">Water</button>
                 <button class="filter-btn" data-category="energy">Energy</button>
-                <button class="filter-btn" data-category="waste">Waste</button>
+                <button class="filter-btn" data-category="gas">Gas</button>
             </div>
         </div>
 
@@ -67,8 +67,7 @@
                         <select id="service-category">
                             <option value="water">Water</option>
                             <option value="energy">Energy</option>
-                            <option value="waste">Waste</option>
-                            <option value="education">Education</option>
+                            <option value="gas">Gas</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -76,9 +75,8 @@
                         <select id="service-icon">
                             <option value="fa-tint">Water Drop</option>
                             <option value="fa-bolt">Lightning</option>
-                            <option value="fa-trash-alt">Trash</option>
-                            <option value="fa-graduation-cap">Education</option>
-                            <option value="fa-lightbulb">Lightbulb</option>
+                            <option value="fa-fire">Fire</option>
+
                         </select>
                     </div>
                     <button type="submit" class="btn primary">Add Service</button>
@@ -131,7 +129,7 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <i class="fas fa-leaf"></i>
-                <h2>ManageYourServices</h2>
+                <h2>Serviapp</h2>
             </div>
             <div class="footer-links">
                 <h3>Quick Links</h3>
@@ -157,65 +155,59 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Datos de servicios
             const services = [
-                {
-                    name: "EcoAgua",
-                    description: "Sistema de monitoreo de consumo de agua en tiempo real con alertas personalizadas y recomendaciones para la reducción de consumo.",
-                    icon: "fa-tint",
-                    category: "agua"
-                },
-                {
-                    name: "EnergíaSmart",
-                    description: "Plataforma de gestión energética inteligente que optimiza el consumo eléctrico en hogares y edificios comerciales.",
-                    icon: "fa-bolt",
-                    category: "energia"
-                },
-                {
-                    name: "ReciclaYA",
-                    description: "Aplicación móvil para la gestión eficiente de residuos con sistema de seguimiento y recompensas por reciclaje.",
-                    icon: "fa-trash-alt",
-                    category: "residuos"
-                },
-                {
-                    name: "EcoEduca",
-                    description: "Talleres y programas educativos para comunidades sobre uso responsable de servicios públicos y sostenibilidad.",
-                    icon: "fa-graduation-cap",
-                    category: "educacion"
-                }
-            ];
+    {
+        name: "EcoAgua",
+        description: "Real-time water consumption monitoring system with personalized alerts and recommendations for reducing usage.",
+        icon: "fa-tint",
+        category: "water"
+    },
+    {
+        name: "EnergíaSmart",
+        description: "Smart energy management platform that optimizes electricity consumption in homes and commercial buildings.",
+        icon: "fa-bolt",
+        category: "energy"
+    },
+    {
+        name: "GasOptimizer",
+        description: "Solution focused on reducing gas usage through real-time monitoring, leak detection, and efficiency tips for households.",
+        icon: "fa-fire",
+        category: "gas"
+    }
+];
 
-            // Datos de testimonios
-            const testimonials = [
-                {
-                    name: "María González",
-                    comment: "Gracias a EcoAgua redujimos nuestro consumo de agua en un 30% en apenas 3 meses. Las alertas en tiempo real son muy útiles.",
-                    rating: 5
-                },
-                {
-                    name: "Juan Pérez",
-                    comment: "EnergíaSmart nos ha permitido ahorrar considerablemente en nuestra factura eléctrica. El sistema es muy intuitivo y fácil de usar.",
-                    rating: 5
-                },
-                {
-                    name: "Laura Sánchez",
-                    comment: "Los talleres de EcoEduca han transformado la manera en que nuestra comunidad gestiona los servicios públicos. Altamente recomendado.",
-                    rating: 4
-                },
-                {
-                    name: "Roberto Díaz",
-                    comment: "ReciclaYA ha hecho que el reciclaje sea más divertido para toda la familia. Los niños están muy motivados con el sistema de recompensas.",
-                    rating: 5
-                },
-                {
-                    name: "Patricia Ramos",
-                    comment: "El soporte técnico de EcoServicios es excepcional. Siempre están disponibles para resolver cualquier duda.",
-                    rating: 4
-                },
-                {
-                    name: "Daniel Torres",
-                    comment: "Las recomendaciones personalizadas que ofrece EnergíaSmart son muy acertadas y fáciles de implementar.",
-                    rating: 4
-                }
-            ];
+             const testimonials = [
+            {
+                name: "María González",
+                comment: "Thanks to EcoAgua, we reduced our water consumption by 30% in just 3 months. The real-time alerts are very helpful.",
+                rating: 5
+            },
+            {
+                name: "Juan Pérez",
+                comment: "EnergíaSmart has allowed us to significantly save on our electricity bill. The system is very intuitive and easy to use.",
+                rating: 5
+            },
+            {
+                name: "Laura Sánchez",
+                comment: "The EcoEduca workshops have transformed how our community manages public services. Highly recommended.",
+                rating: 4
+            },
+            {
+                name: "Roberto Díaz",
+                comment: "ReciclaYA has made recycling more fun for the whole family. The kids are very motivated by the rewards system.",
+                rating: 5
+            },
+            {
+                name: "Patricia Ramos",
+                comment: "The technical support from EcoServicios is exceptional. They’re always available to answer any questions.",
+                rating: 4
+            },
+            {
+                name: "Daniel Torres",
+                comment: "The personalized recommendations from EnergíaSmart are spot-on and easy to implement.",
+                rating: 4
+            }
+        ];
+
 
             // Seleccionamos el contenedor de servicios
             const servicesGrid = document.getElementById('services-grid');
