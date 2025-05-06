@@ -126,7 +126,6 @@
                 }
             ];
 
-            // Render services
             const servicesGrid = document.getElementById('services-grid');
             services.forEach(service => {
                 servicesGrid.innerHTML += `
@@ -143,7 +142,6 @@
                 `;
             });
 
-            // Add event listeners for service buttons
             document.querySelectorAll('.details-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const service = this.closest('.service-item');
@@ -153,7 +151,7 @@
                 });
             });
 
-            // Render testimonials
+            
             const testimonialsContainer = document.getElementById('testimonials-container');
             const showMoreBtn = document.getElementById('show-more-btn');
             let displayedCount = 0;
