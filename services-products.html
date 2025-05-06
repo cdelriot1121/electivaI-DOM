@@ -32,18 +32,6 @@
             <p class="subtitle">Smart solutions for public service management</p>
         </section>
 
-        <div class="services-controls">
-            <div class="search-container">
-                <input type="text" id="service-search" placeholder="Search service...">
-                <button id="search-btn" class="btn primary">Search</button>
-            </div>
-            <div class="category-filter">
-                <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="water">Water</button>
-                <button class="filter-btn" data-category="energy">Energy</button>
-                <button class="filter-btn" data-category="gas">Gas</button>
-            </div>
-        </div>
 
         <section class="services-container">
             <h2>Our Solutions</h2>
@@ -51,38 +39,7 @@
                 <!-- Services will be dynamically loaded from JavaScript -->
             </div>
 
-            <div class="new-service-form">
-                <h3>Add New Service</h3>
-                <form id="add-service-form">
-                    <div class="form-group">
-                        <label for="service-name">Service Name:</label>
-                        <input type="text" id="service-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-description">Description:</label>
-                        <textarea id="service-description" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-category">Category:</label>
-                        <select id="service-category">
-                            <option value="water">Water</option>
-                            <option value="energy">Energy</option>
-                            <option value="gas">Gas</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="service-icon">Icon:</label>
-                        <select id="service-icon">
-                            <option value="fa-tint">Water Drop</option>
-                            <option value="fa-bolt">Lightning</option>
-                            <option value="fa-fire">Fire</option>
-
-                        </select>
-                    </div>
-                    <button type="submit" class="btn primary">Add Service</button>
-                </form>
-            </div>
-        </section>
+          
 
         <section class="testimonials-section">
             <h2>User Testimonials</h2>
@@ -94,34 +51,8 @@
             
             <div class="testimonials-controls">
                 <button id="show-more-btn" class="btn primary">Show More Testimonials</button>
-                <button id="add-testimonial-btn" class="btn secondary">Add My Testimonial</button>
             </div>
 
-            <div id="testimonial-form-container" class="testimonial-form-container" style="display: none;">
-                <h3>Add Your Testimonial</h3>
-                <form id="add-testimonial-form">
-                    <div class="form-group">
-                        <label for="testimonial-name">Your Name:</label>
-                        <input type="text" id="testimonial-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="testimonial-comment">Comment:</label>
-                        <textarea id="testimonial-comment" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="testimonial-rating">Rating:</label>
-                        <div class="rating-selector" id="rating-selector">
-                            <i class="far fa-star" data-rating="1"></i>
-                            <i class="far fa-star" data-rating="2"></i>
-                            <i class="far fa-star" data-rating="3"></i>
-                            <i class="far fa-star" data-rating="4"></i>
-                            <i class="far fa-star" data-rating="5"></i>
-                        </div>
-                        <input type="hidden" id="testimonial-rating" value="0">
-                    </div>
-                    <button type="submit" class="btn primary">Submit Testimonial</button>
-                </form>
-            </div>
         </section>
     </main>
     
@@ -295,85 +226,8 @@
             // Mostramos todos los servicios inicialmente
             displayServices(services);
             
-            // Funcionamiento de los botones de filtro
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Quitamos la clase active de todos los botones
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Añadimos la clase active al botón actual
-                    this.classList.add('active');
-                    
-                    const selectedCategory = this.getAttribute('data-category');
-                    
-                    if (selectedCategory === 'todos') {
-                        displayServices(services);
-                    } else {
-                        // Filtramos los servicios
-                        const filteredServices = services.filter(service => 
-                            service.category === selectedCategory
-                        );
-                        displayServices(filteredServices);
-                    }
-                });
-            });
-            
-            // Funcionamiento del buscador
-            const searchBtn = document.getElementById('search-btn');
-            const searchInput = document.getElementById('service-search');
-            
-            searchBtn.addEventListener('click', function() {
-                const searchText = searchInput.value.toLowerCase();
-                
-                if (searchText.trim() === '') {
-                    displayServices(services);
-                    return;
-                }
-                
-                // Filtramos por texto en nombre o descripción
-                const searchResults = services.filter(service => 
-                    service.name.toLowerCase().includes(searchText) || 
-                    service.description.toLowerCase().includes(searchText)
-                );
-                
-                displayServices(searchResults);
-            });
-            
-            // Función para añadir un nuevo servicio
-            const addServiceForm = document.getElementById('add-service-form');
-            
-            addServiceForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Obtenemos los valores del formulario
-                const name = document.getElementById('service-name').value;
-                const description = document.getElementById('service-description').value;
-                const category = document.getElementById('service-category').value;
-                const icon = document.getElementById('service-icon').value;
-                
-                // Creamos el nuevo servicio
-                const newService = {
-                    name,
-                    description,
-                    icon,
-                    category
-                };
-                
-                // Añadimos al array de servicios
-                services.push(newService);
-                
-                // Actualizamos la visualización
-                displayServices(services);
-                
-                // Limpiamos el formulario
-                addServiceForm.reset();
-                
-                // Mostramos un mensaje de confirmación
-                alert(`El servicio "${name}" ha sido añadido correctamente.`);
-            });
-
+          
+           
             // Funciones para los testimonios
             const testimonialsContainer = document.getElementById('testimonials-container');
             const showMoreBtn = document.getElementById('show-more-btn');
@@ -464,7 +318,7 @@
                     displayedTestimonials++;
                 }
                 
-                // Mostrar u ocultar el botón "Mostrar más"
+             
                 if(displayedTestimonials >= testimonials.length) {
                     showMoreBtn.style.display = 'none';
                 } else {
@@ -480,105 +334,6 @@
                 displayTestimonials(displayedTestimonials, 3);
             });
 
-            // Manejo del formulario de testimonios
-            const addTestimonialBtn = document.getElementById('add-testimonial-btn');
-            const testimonialForm = document.getElementById('testimonial-form-container');
-            
-            addTestimonialBtn.addEventListener('click', function() {
-                // Alternamos la visibilidad del formulario
-                if (testimonialForm.style.display === 'none' || testimonialForm.style.display === '') {
-                    testimonialForm.style.display = 'block';
-                    this.textContent = 'Cancelar';
-                } else {
-                    testimonialForm.style.display = 'none';
-                    this.textContent = 'Añadir mi testimonio';
-                }
-            });
-
-            // Manejo de la selección de estrellas
-            const ratingStars = document.querySelectorAll('#rating-selector i');
-            const ratingInput = document.getElementById('testimonial-rating');
-            
-            ratingStars.forEach(star => {
-                star.addEventListener('click', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    
-                    // Actualizamos el valor del input oculto
-                    ratingInput.value = rating;
-                    
-                    // Actualizamos la visualización de las estrellas
-                    ratingStars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.className = 'fas fa-star';
-                        } else {
-                            s.className = 'far fa-star';
-                        }
-                    });
-                });
-                
-                // Añadimos efecto hover
-                star.addEventListener('mouseenter', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    
-                    ratingStars.forEach((s, index) => {
-                        if (index < rating) {
-                            s.style.color = '#f1c40f';
-                        }
-                    });
-                });
-                
-                star.addEventListener('mouseleave', function() {
-                    ratingStars.forEach(s => {
-                        s.style.color = '';
-                    });
-                });
-            });
-            
-            // Manejo del envío del formulario de testimonio
-            const addTestimonialForm = document.getElementById('add-testimonial-form');
-            
-            addTestimonialForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Obtenemos los valores del formulario
-                const name = document.getElementById('testimonial-name').value;
-                const comment = document.getElementById('testimonial-comment').value;
-                const rating = parseInt(document.getElementById('testimonial-rating').value);
-                
-                // Validaciones básicas
-                if (!name || !comment || rating < 1) {
-                    alert('Por favor, completa todos los campos y selecciona una calificación.');
-                    return;
-                }
-                
-                // Creamos el nuevo testimonio
-                const newTestimonial = {
-                    name,
-                    comment,
-                    rating
-                };
-                
-                // Añadimos al array de testimonios
-                testimonials.push(newTestimonial);
-                
-                // Actualizamos la visualización
-                testimonialForm.style.display = 'none';
-                addTestimonialBtn.textContent = 'Añadir mi testimonio';
-                
-                // Limpiamos y ocultamos el formulario
-                addTestimonialForm.reset();
-                ratingStars.forEach(s => {
-                    s.className = 'far fa-star';
-                });
-                
-                // Mostramos el nuevo testimonio
-                testimonialsContainer.innerHTML = '';
-                displayedTestimonials = 0;
-                displayTestimonials(0, testimonials.length < 3 ? testimonials.length : 3);
-                
-                // Mensaje de confirmación
-                alert('¡Gracias por compartir tu experiencia! Tu testimonio ha sido añadido.');
-            });
         });
     </script>
 </body>
