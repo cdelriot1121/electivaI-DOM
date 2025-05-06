@@ -32,26 +32,13 @@
             <p class="subtitle">Professionals committed to innovation and sustainability</p>
         </section>
     
-        <div class="team-controls">
-            <div class="filter-container">
-                <label for="team-filter">Filter by role:</label>
-                <select id="team-filter">
-                    <option value="all">All</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="backend">Backend</option>
-                    <option value="fullstack">Full Stack</option>
-                </select>
-            </div>
-        </div>
+       
     
         <section class="team-container" id="team-container">
             <!-- Team members will be dynamically loaded here -->
         </section>
     
-        <div class="team-info">
-            <h2>Team Statistics</h2>
-            <p id="team-stats">Total members: <span id="member-count">0</span></p>
-        </div>
+      
     </main>
     
     <footer>
@@ -128,10 +115,6 @@
             function displayTeamMembers(members) {
                 // Limpiar el contenedor
                 teamContainer.innerHTML = '';
-                
-                // Actualizar contador de miembros
-                const memberCountElement = document.getElementById('member-count');
-                memberCountElement.textContent = members.length;
                 
                 // Iterar a través de los miembros con un bucle for tradicional
                 for (let i = 0; i < members.length; i++) {
@@ -246,85 +229,8 @@
             
             // Mostrar todos los miembros inicialmente
             displayTeamMembers(teamMembers);
+         });
             
-            // Filtrado de miembros
-            const teamFilter = document.getElementById('team-filter');
-            
-            teamFilter.addEventListener('change', function() {
-                const selectedCategory = this.value;
-                
-                if (selectedCategory === 'all') {
-                    // Mostrar todos
-                    displayTeamMembers(teamMembers);
-                } else {
-                    // Filtrar miembros con bucle for
-                    const filteredMembers = [];
-                    for (let i = 0; i < teamMembers.length; i++) {
-                        if (teamMembers[i].category === selectedCategory) {
-                            filteredMembers.push(teamMembers[i]);
-                        }
-                    }
-                    displayTeamMembers(filteredMembers);
-                }
-            });
-            
-                // Actualizar estilo de todas las tarjetas
-                const allCards = document.querySelectorAll('.member-card');
-                
-                for (let i = 0; i < allCards.length; i++) {
-                    const card = allCards[i];
-                    const frontElement = card.querySelector('.member-front');
-                    const backElement = card.querySelector('.member-back');
-                    const textElements = card.querySelectorAll('h3, .member-role');
-                    
-                    // Verificar nuevamente el estado actual
-                    const bodyClassesAfterChange = body.getAttribute('class') || '';
-                    const isDarkMode = bodyClassesAfterChange.indexOf('dark-mode') !== -1;
-                    
-                    if (isDarkMode) {
-                        frontElement.style.backgroundColor = '#2c3e50';
-                        backElement.style.backgroundColor = '#34495e';
-                        
-                        for (let j = 0; j < textElements.length; j++) {
-                            textElements[j].style.color = '#ecf0f1';
-                        }
-                    } else {
-                        frontElement.style.backgroundColor = '';
-                        backElement.style.backgroundColor = '';
-                        
-                        for (let j = 0; j < textElements.length; j++) {
-                            textElements[j].style.color = '';
-                        }
-                    }
-                }
-            });
-            
-            // Estadísticas del equipo
-            document.querySelector('.team-info').addEventListener('click', function() {
-                const statsElement = document.getElementById('team-stats');
-                
-                // Contar miembros por categoría usando bucles for
-                let frontendCount = 0;
-                let backendCount = 0;
-                let fullstackCount = 0;
-                
-                for (let i = 0; i < teamMembers.length; i++) {
-                    const category = teamMembers[i].category;
-                    if (category === 'frontend') {
-                        frontendCount++;
-                    } else if (category === 'backend') {
-                        backendCount++;
-                    } else if (category === 'fullstack') {
-                        fullstackCount++;
-                    }
-                }
-                
-                // Actualizar estadísticas
-                statsElement.innerHTML = 'Total members: <span id="member-count">' + teamMembers.length + '</span><br>' +
-                                       'Frontend: ' + frontendCount + '<br>' +
-                                       'Backend: ' + backendCount + '<br>' +
-                                       'Full Stack: ' + fullstackCount;
-            });
-    </script>
+</script>
 </body>
 </html>
